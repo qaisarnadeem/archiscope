@@ -1,0 +1,68 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require nprogress
+ *= require nprogress-bootstrap
+ *= require_tree .
+ *= require_self
+ */
+
+.hero-spacer {
+  margin-top: 50px;
+}
+
+.hero-feature {
+  margin-bottom: 30px;
+}
+
+footer {
+  margin: 50px 0;
+}
+
+.search-box {
+  .search-field {
+    height: 50px;
+    border-radius: 8px 0px 0px 8px;
+    font-size: 20px;
+  }
+  .field-container{
+    padding-right: 0;
+    margin-bottom: 0;
+  }
+  .submit-btn{
+    border-radius: 0 8px 8px 0;
+    height: 50px;
+  }
+  padding-bottom: 50px;
+}
+.jumbotron.hero-spacer{
+  padding-top: 1px;
+  padding-bottom: 30px;
+}
+.pagination a, .pagination *{
+  font-size: 20px;
+  padding: 5px;
+}
+.pagination{
+  padding-left:33%;
+}
+.thumbnail > img, .thumbnail a > img{
+  height: 250px;
+}
+.field_with_errors {
+  padding: 0;
+  background-color: red;
+  display: block;
+}
+

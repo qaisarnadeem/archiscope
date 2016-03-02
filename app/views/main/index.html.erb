@@ -1,0 +1,17 @@
+<header class="jumbotron hero-spacer">
+
+  <h1><%=@heading || 'Welcome to ARCHiSCOPE'%></h1>
+  <%=form_tag request.path ,:class=>'form horizontal',:method=>:get do%>
+      <div class="form-group search-box">
+        <div class="col-xs-9 field-container">
+          <%=text_field_tag 'q' , params[:q],:placeholder=>'Type Here to search properties',:class=>'form-control search-field'%>
+        </div>
+        <div class="col-xs-3" style="padding-left:0px">
+          <input type="submit" name="commit" value="Search" class="btn btn-primary btn-lg submit-btn purple-submit">
+        </div>
+      </div>
+  <%end%>
+  </p>
+</header>
+
+<hr>
