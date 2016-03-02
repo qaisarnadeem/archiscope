@@ -14,8 +14,10 @@
  *
  *= require nprogress
  *= require nprogress-bootstrap
+ *= require devise_bootstrap_views
  *= require_tree .
  *= require_self
+
  */
 
 .hero-spacer {
