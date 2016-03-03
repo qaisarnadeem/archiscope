@@ -8,9 +8,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+   def create
+     params[:role_id]=User::NormalUser if params[:role_id].blank?
+     super
+   end
 
   # GET /resource/edit
   # def edit
@@ -18,9 +19,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+   def update
+     params[:role_id]=User::NormalUser if params[:role_id].blank?
+     super
+   end
 
   # DELETE /resource
   # def destroy
@@ -40,12 +42,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.for(:sign_up) << :first_name << :last_name << :avatar
+    devise_parameter_sanitizer.for(:sign_up) << :first_name << :last_name << :avatar << :role_id
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.for(:account_update) << :first_name << :last_name << :avatar
+    devise_parameter_sanitizer.for(:account_update) << :first_name << :last_name << :avatar << :role_id
   end
 
   # The path used after sign up.

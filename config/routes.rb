@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+  resources :contacts
   resources :notes
-  resources :organizations
+  resources :organizations do
+    member do
+      get :add_tech_area
+      get :add_app_area
+      get :add_problem
+    end
+  end
   devise_for :users, controllers: {
                        registrations: 'users/registrations'
                    }

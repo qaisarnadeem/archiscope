@@ -9,9 +9,15 @@
           <%= f.label :first_name %>
           <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
         </div>
+
         <div class="form-group">
           <%= f.label :last_name %>
           <%= f.text_field :last_name, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :role %>
+          <%= f.select :role_id, options_for_user_roles,{:prompt=>'Choose User Role'},class: "form-control" %>
         </div>
         <div class="form-group">
           <%= f.label :email %>
