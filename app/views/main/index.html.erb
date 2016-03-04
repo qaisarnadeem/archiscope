@@ -3,15 +3,25 @@
   <h1><%=@heading || 'Welcome to ARCHiSCOPE'%></h1>
   <%=form_tag request.path ,:class=>'form horizontal',:method=>:get do%>
       <div class="form-group search-box">
-        <div class="col-xs-9 field-container">
-          <%=text_field_tag 'q' , params[:q],:placeholder=>'Type Here to search properties',:class=>'form-control search-field'%>
+        <div class="field-container">
+          <div class="col-xs-9">
+          <%=text_field_tag 'q' , params[:q],autocomplete: :off,:placeholder=>'Search',:class=>'form-control search-field',:id=>'query-search'%>
         </div>
-        <div class="col-xs-3" style="padding-left:0px">
-          <input type="submit" name="commit" value="Search" class="btn btn-primary btn-lg submit-btn purple-submit">
+          <div class="form-group col-xs-3">
+            <%=select_tag "type",options_for_search_types(params[:type]) ,class: "form-control",id: 'type-chosen'%>
+          </div>
         </div>
       </div>
   <%end%>
-  </p>
 </header>
 
+<%= render partial: "organizations/organization", collection: @organizations%>
+<%= will_paginate @organizations%>
 <hr>
+<script type="text/javascript">
+    autocomplete_data=<%=raw(get_tags_hash_for_autocomplete.to_json)%>
+            set_autocomplete_for('#query-search');
+        $('#type-chosen').change(function(){
+            set_autocomplete_for('#query-search',$(this).val());
+        });
+</script>

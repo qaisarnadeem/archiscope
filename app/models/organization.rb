@@ -1,6 +1,7 @@
 class Organization < ActiveRecord::Base
   belongs_to :user
   has_many :notes,dependent: :destroy
+  has_many :contacts
   acts_as_taggable_on :technology_areas,:application_areas,:problems
   attr_accessor :logo
 
@@ -13,7 +14,9 @@ class Organization < ActiveRecord::Base
   InvestmentGroup=3
   OrganizationTypesFriendlyNames={Company=>'Company',GovernmentAgency=>'Government Agency',InvestmentGroup=>'Investment Group'}
   OrganizationTypesColors={Company=>'green',GovernmentAgency=>'red',InvestmentGroup=>'blue'}
-
+  ProblemKeyWord='problems'
+  AppKeyWord='app_areas'
+  TechKeyWord='tech_areas'
 
   def tech_areas
     self.technology_area_list
@@ -22,6 +25,17 @@ class Organization < ActiveRecord::Base
 
   def app_areas
     self.application_area_list
+  end
+
+  def self.find_by_tags tag_name,tag_type=nil
+    return Organization.order('random()') unless tag_name.present?
+    unless tag_type.present?
+      ids1=Organization.select(:id).where("LOWER(name) like LOWER(?)","%#{tag_name}%").map &:id
+      ids2=Organization.tagged_with([tag_name],:wild=>true,:any=>true).select(:id).map &:id
+      return Organization.where(:id=>(ids1 | ids2))
+    end
+    return Organization.tagged_with([tag_name],:wild=>true,:any=>true) unless tag_type.present?
+    Organization.tagged_with([tag_name],:wild=>true,:on=>tag_type,:any=>true)
   end
 
   def find_all_matching_tags name,context=nil
