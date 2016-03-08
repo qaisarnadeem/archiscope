@@ -13,7 +13,7 @@ class Organization < ActiveRecord::Base
   GovernmentAgency=2
   InvestmentGroup=3
   OrganizationTypesFriendlyNames={Company=>'Company',GovernmentAgency=>'Government Agency',InvestmentGroup=>'Investment Group'}
-  OrganizationTypesColors={Company=>'green',GovernmentAgency=>'red',InvestmentGroup=>'blue'}
+  OrganizationTypesColors={Company=>'company-color',GovernmentAgency=>'government-agency-color',InvestmentGroup=>'investment-agency-color'}
   ProblemKeyWord='problems'
   AppKeyWord='app_areas'
   TechKeyWord='tech_areas'
@@ -23,8 +23,17 @@ class Organization < ActiveRecord::Base
   end
 
 
+  def type_class
+    OrganizationTypesColors[self.organization_type_id]
+  end
+
+
   def app_areas
     self.application_area_list
+  end
+
+  def total_tags_count
+    self.problems.count + self.technology_areas.count + self.application_areas.count
   end
 
   def self.find_by_tags tag_name,tag_type=nil
@@ -41,6 +50,14 @@ class Organization < ActiveRecord::Base
   def find_all_matching_tags name,context=nil
     return ActsAsTaggableOn::Tagging.includes(:tag).where("name like ? ","'#{name}%'").order(:name).uniq unless context
     ActsAsTaggableOn::Tagging.includes(:tag).where(context: context).where("name like ? ","'#{name}%'").order(:name).uniq
+  end
+
+  def self.all_tech_areas_categorized
+    ActsAsTaggableOn::Tagging.
+        select('taggings.context, tags.name as tag_name,organizations.organization_type_id as organization_type_id,
+                count(taggings.id) as count_all').
+        joins(:tag).joins('inner join organizations on organizations.id = taggable_id').where(:taggable_type=>"Organization").
+        group('taggings.context, tags.name,organizations.organization_type_id').group_by &:context
   end
 
 end

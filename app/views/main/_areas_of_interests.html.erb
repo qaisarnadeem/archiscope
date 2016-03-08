@@ -1,0 +1,32 @@
+<%grouped_result=Organization.all_tech_areas_categorized
+%>
+<ul class="nav nav-tabs">
+  <li class="dropdown">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Choose Type <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><a data-toggle="tab" href="#tech_areas_tab">Tech Areas</a></li>
+      <li><a data-toggle="tab" href="#app_areas_tab">Application Areas</a></li>
+      <li><a data-toggle="tab" href="#problems_tab">Problems</a></li>
+    </ul>
+  </li>
+</ul>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="tab-content">
+      <div id="tech_areas_tab" class="tab-pane fade">
+        <%=render :partial => "tags_list",:locals => {:grouped_result=>grouped_result['technology_areas'] || {},:filter_type=>Organization::TechKeyWord}%>
+      </div>
+      <div id="app_areas_tab" class="tab-pane fade">
+        <%=render :partial => "tags_list",:locals => {:grouped_result=>grouped_result['application_areas'] || {},:filter_type=>Organization::AppKeyWord}%>
+      </div>
+      <div id="problems_tab" class="tab-pane fade">
+        <%=render :partial => "tags_list",:locals => {:grouped_result=>grouped_result['problems'] || {},:filter_type=>Organization::ProblemKeyWord}%>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

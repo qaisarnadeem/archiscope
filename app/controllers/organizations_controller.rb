@@ -11,6 +11,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1
   # GET /organizations/1.json
   def show
+    @organization=Organization.includes(:notes=>[:user]).find(params[:id])
   end
 
   # GET /organizations/new

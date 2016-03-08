@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
     self.role_id == NormalUser
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   private
   def set_role
     self.set_role_id=NormalUser if self.role_id.blank?

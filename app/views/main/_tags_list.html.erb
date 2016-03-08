@@ -1,0 +1,28 @@
+<ul class="list-unstyled">
+  <%grouped_result.group_by(&:tag_name).each do |tag_name,tagging|%>
+      <%=link_to root_path(q: tag_name,type:filter_type) do%>
+          <li>
+            <div class="col-xs-2"><%=tagging.length%></div>
+            <div class="col-xs-7"><%=tag_name%></div>
+            <div class="col-xs-3">
+              <%count_hash=tagging.group_by(&:organization_type_id)%>
+              <%if count_hash[Organization::Company]%>
+                  <div class="col-xs-1 <%=Organization::OrganizationTypesColors[Organization::Company]%>">
+                    <%=count_hash[Organization::Company].first.count_all%>
+                  </div>
+              <%end%>
+              <%if count_hash[Organization::GovernmentAgency]%>
+                  <div class="col-xs-1 <%=Organization::OrganizationTypesColors[Organization::GovernmentAgency]%>">
+                    <%=count_hash[Organization::GovernmentAgency].first.count_all%>
+                  </div>
+              <%end%>
+              <%if count_hash[Organization::InvestmentGroup]%>
+                  <div class="col-xs-1 <%=Organization::OrganizationTypesColors[Organization::InvestmentGroup]%>">
+                    <%=count_hash[Organization::InvestmentGroup].first.count_all%>
+                  </div>
+              <%end%>
+            </div>
+          </li>
+      <%end%>
+  <%end%>
+</ul>
