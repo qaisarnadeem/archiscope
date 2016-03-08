@@ -1,6 +1,6 @@
 class Organization < ActiveRecord::Base
   belongs_to :user
-  has_many :notes,dependent: :destroy
+  has_many :notes ,->{order(:updated_at=>:desc)},dependent: :destroy
   has_many :contacts
   acts_as_taggable_on :technology_areas,:application_areas,:problems
   attr_accessor :logo
