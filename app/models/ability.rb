@@ -9,12 +9,16 @@ class Ability
          can :manage, :all
        else
          can :read, :all
-         can :manage ,Organization ,user_id: user.id
-         can :create,Note
-         can :update , Note,user_id: user.id
-         can :destroy , Note , user_id: user.id
-         can :manage , Contact,organization_id: user.organizations.select(:id).map(&:id)
-         can :manage,Note,organization_id: user.organizations.select(:id).map(&:id)
+         can :manage , Organization
+         can :manage,Note
+         can :manage,Contact
+
+         #can :manage ,Organization ,user_id: user.id
+         #can :create,Note
+         #can :update , Note,user_id: user.id
+         #can :destroy , Note , user_id: user.id
+         #can :manage , Contact,organization_id: user.organizations.select(:id).map(&:id)
+         #can :manage,Note,organization_id: user.organizations.select(:id).map(&:id)
        end
     #
     # The first argument to `can` is the action you are giving the user

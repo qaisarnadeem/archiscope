@@ -1,11 +1,6 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
-
-  # GET /notes
-  # GET /notes.json
-  def index
-    @notes = Note.all
-  end
+  load_and_authorize_resource
 
   # GET /notes/1
   # GET /notes/1.json
