@@ -1,6 +1,6 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, except:  [:new,:create,:index]
-  before_action :set_tag_params , only: [:add_problem,:add_app_area,:add_tech_area]
+  before_action :set_tag_params , only: [:add_problem,:add_app_area,:add_tech_area,:remove_tag]
 
   # GET /organizations
   # GET /organizations.json
@@ -23,6 +23,13 @@ class OrganizationsController < ApplicationController
   def edit
   end
 
+  def remove_tag
+    @organization.tech_areas.remove(params[:tag]) if params[:type] == Organization::TechKeyWord
+    @organization.app_areas.remove(params[:tag]) if params[:type] == Organization::AppKeyWord
+    @organization.problem_list.remove(params[:tag]) if params[:type] == Organization::ProblemKeyWord
+    @organization.save
+    render :json=>{:response=>'SUCCESS'}
+  end
 
   def add_tech_area
     Organization.transaction do
@@ -30,6 +37,7 @@ class OrganizationsController < ApplicationController
       @organization.tech_areas.remove(params[:previous_tag]) if params[:previous_tag].present?
       @organization.save
     end
+    render :json=>{:response=>"SUCCESS"}
   end
 
   def add_app_area
@@ -38,6 +46,7 @@ class OrganizationsController < ApplicationController
       @organization.app_areas.remove(params[:previous_tag]) if params[:previous_tag].present?
       @organization.save
     end
+    render :json=>{:response=>"SUCCESS"}
   end
 
 
@@ -47,6 +56,7 @@ class OrganizationsController < ApplicationController
       @organization.app_areas.remove(params[:previous_tag]) if params[:previous_tag].present?
       @organization.save
     end
+    render :json=>{:response=>"SUCCESS"}
   end
 
   def add_note
@@ -109,8 +119,8 @@ class OrganizationsController < ApplicationController
   end
 
   def set_tag_params
-      params[:tag].strip! if params[:tag]
-      params[:previous_tag].strip! if params[:previous_tag]
+    params[:tag].strip! if params[:tag]
+    params[:previous_tag].strip! if params[:previous_tag]
   end
 
   def note_params

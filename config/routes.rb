@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get :add_tech_area
       get :add_app_area
       get :add_problem
+      delete :remove_tag ,as: :remove_tag
     end
   end
   devise_for :users, controllers: {

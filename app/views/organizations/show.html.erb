@@ -21,7 +21,7 @@
       <a data-toggle="tab" href="#profile_tab">Profile</a>
     </li>
     <li class="col-xs-4">
-        <a data-toggle="tab" href="#areas_tab"><%=@organization.total_tags_count%> Areas of interest</a>
+      <a data-toggle="tab" href="#areas_tab"><%=@organization.total_tags_count%> Areas of interest</a>
     </li>
     <li class="col-xs-4">
       <a data-toggle="tab" href="#notes_tab"><%=@organization.notes.length%> Notes</a>
@@ -45,7 +45,17 @@
               <%=contact.full_name%> status
             </div>
             <div class="col-xs-4">
-              edit,remove
+              <div class="col-xs-2">
+                <%=link_to edit_contact_path(contact) do%>
+                    <i class="glyphicon glyphicon-pencil"></i>
+                <%end%>
+              </div>
+              <div class="col-xs-2">
+                <%=link_to contact_path(contact),
+                           :method => 'delete' do%>
+                    <i class="glyphicon glyphicon-remove"></i>
+                <%end%>
+              </div>
             </div>
             <div class="col-xs-12">
               <%=contact.position%>
@@ -73,7 +83,15 @@
                 <%=tech_area%>
               </div>
               <div class="col-xs-4">
-                Edit,Remove
+                <div class="col-xs-2">
+                  <i class="glyphicon glyphicon-pencil"></i>
+                </div>
+                <div class="col-xs-2">
+                  <%=link_to remove_tag_organization_path(id: @organization.id ,tag: tech_area,type: Organization::TechKeyWord),
+                             :method => 'delete' do%>
+                      <i class="glyphicon glyphicon-remove"></i>
+                  <%end%>
+                </div>
               </div>
             </li>
         <%end%>
@@ -92,7 +110,15 @@
                 <%=app_area%>
               </div>
               <div class="col-xs-4">
-                Edit,Remove
+                <div class="col-xs-2">
+                  <i class="glyphicon glyphicon-pencil"></i>
+                </div>
+                <div class="col-xs-2">
+                  <%=link_to remove_tag_organization_path(id: @organization.id ,tag: app_area,type: Organization::AppKeyWord),
+                             :method => 'delete' do%>
+                      <i class="glyphicon glyphicon-remove"></i>
+                  <%end%>
+                </div>
               </div>
             </li>
         <%end%>
@@ -110,7 +136,15 @@
                 <%=problem%>
               </div>
               <div class="col-xs-4">
-                Edit,Remove
+                <div class="col-xs-2">
+                  <i class="glyphicon glyphicon-pencil"></i>
+                </div>
+                <div class="col-xs-2">
+                  <%=link_to remove_tag_organization_path(id: @organization.id ,tag: problem,type: Organization::ProblemKeyWord),
+                             :method => 'delete' do%>
+                      <i class="glyphicon glyphicon-remove"></i>
+                  <%end%>
+                </div>
               </div>
             </li>
         <%end%>
@@ -119,7 +153,10 @@
   </div>
   <div id="notes_tab" class="tab-pane fade col-xs-12">
     <div class="well col-xs-12">
-      <a href="#">WRITE A NEW NOTE</a>
+      <button onclick="$('#notes-form-container').slideToggle();">WRITE A NEW NOTE</button>
+      <div style="display: none" id="notes-form-container" class="notes-form">
+        <%=render :partial =>  "notes/form"%>
+      </div>
     </div>
     <%=render :partial => "notes/note", collection: @organization.notes%>
   </div>

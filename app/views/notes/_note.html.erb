@@ -12,7 +12,9 @@
       </div>
     </div>
     <div class="col-xs-2">
-      Edit,Remove
+      Edit, <%=link_to note_path(note),:method => 'delete' do%>
+          <i class="glyphicon glyphicon-remove"></i>
+      <%end%>
     </div>
   </div>
   <div class="col-xs-12">

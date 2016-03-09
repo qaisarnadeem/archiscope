@@ -1,29 +1,16 @@
-<%= form_for(@note) do |f| %>
-  <% if @note.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@note.errors.count, "error") %> prohibited this note from being saved:</h2>
-
-      <ul>
-      <% @note.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%note ||= Note.new %>
+<%= form_for(note,html:{remote: true,class: 'form-horizontal'}) do |f| %>
+    <%=f.hidden_field :organization_id,:value=>@organization.id%>
+    <div class="form-group">
+      <%= f.label :description, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-10">
+        <%= f.text_area :description, :class => 'form-control' %>
+      </div>
+      <%=f.error_span(:address) %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :organization_id %><br>
-    <%= f.text_field :organization_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10">
+        <%= f.submit nil, :class => 'btn btn-primary' %>
+      </div>
+    </div>
 <% end %>
