@@ -17,9 +17,6 @@ class User < ActiveRecord::Base
 
   before_save :set_role
 
-
-
-
   def is_admin?
     self.role_id == ADMIN
   end
@@ -34,6 +31,6 @@ class User < ActiveRecord::Base
 
   private
   def set_role
-    self.set_role_id=NormalUser if self.role_id.blank?
+    self.role_id=NormalUser if self.role_id.blank?
   end
 end
