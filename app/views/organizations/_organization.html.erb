@@ -1,32 +1,24 @@
 <%=link_to organization_path(organization) do %>
-    <div class="row organization-container">
-      <div class="col-xs-3">
-        <%=image_tag organization.logo.url(:thumb)%>
-      </div>
-      <div class="col-xs-8">
-        <div class="row">
-          <div class="col-xs-12">
-            <h2>
-              <%=organization.name%>
-            </h2>
-          </div>
-          <div class="col-xs-12">
-      <span>
-        <%=organization.address%>
-      </span>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-12">
-        <p><%=organization.about%></p>
-      </div>
-      <div class="col-xs-12 organization-links">
-        <ul class="list-inline">
-          <li><span></span><%=organization.contacts.length%> Contact</li>
-          <li><span></span><%=organization.tech_areas.length%> Tech Areas</li>
-          <li><span></span><%=organization.app_areas.length%> Applications</li>
-          <li><span></span><%=organization.problems.length%> Problems</li>
-        </ul>
-      </div>
+<div class="col-xs-12 p-0">
+  <div class="col-xs-12 box_asian mt-30">
+    <div class="icon_div">
+      <%=image_tag organization.logo.url(:thumb)%>
     </div>
+    <div class="col-xs-10 custom_width">
+      <h2 class="weight_bold"><%=organization.name%></h2>
+      <p class="font-18 light-text"> <%=organization.address%></p>
+      <p class="font-18 light-text">Last updated on <%=organization.last_updated_at%></p>
+    </div>
+    <div class="clearfix"></div>
+    <p class="mtb-30 font-18 light-text "><%=organization.about%></p>
+  </div>
+  <div class="col-xs-12 <%=Organization::OrganizationTypesColors[organization.organization_type_id] %>  p-20">
+    <ul class="custom_icon">
+      <li class="col-xs-3 text-center"><i class="user"></i> <span><%=organization.contacts.length%> Contact</span></li>
+      <li class="col-xs-3 text-center"><i class="g_user"></i> <span><%=organization.tech_areas.length%> Tech Areas</span></li>
+      <li class="col-xs-3 text-center"><i class="global"></i> <span><%=organization.app_areas.length%> Applications</span></li>
+      <li class="col-xs-3 text-center"><i class="vlc"></i> <span><%=organization.problems.length%> Problems</span></li>
+    </ul>
+  </div>
+</div>
 <%end%>

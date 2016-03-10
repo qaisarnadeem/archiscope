@@ -1,5 +1,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
+@import "style";
+.company-color{
+  background-color: #BA2586;
+}
+.government-agency-color{
+  background-color: #F0C514;
+}
+.investment-group-color{
+  background-color: #8DC63F;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -12,54 +23,50 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require nprogress
- *= require nprogress-bootstrap
- *= require devise_bootstrap_views
- *= require easyautocomplete/easy-autocomplete.themes.min
- *= require /home/qaisarnadeem/rails/archiscope/vendor/assets/stylesheets/easyautocomplete/easy-autocomplete.css
+ *= require font-awesome
  *= require_tree .
  *= require_self
-
+ *= require style
  */
-
-.hero-spacer {
-  margin-top: 50px;
-}
-
-.hero-feature {
-  margin-bottom: 30px;
-}
-
-footer {
-  margin: 50px 0;
-}
-
-.search-box {
-  background: white;
-  .search-field {
-    height: 50px;
-    border-radius: 8px 0px 0px 8px;
-    font-size: 20px;
-    border: none;
-  }
-  select{
-    height: 50px;
-    border: none;
-  }
-  .field-container{
-    padding-right: 0;
-    margin-bottom: 0;
-  }
-  .submit-btn{
-    border-radius: 0 8px 8px 0;
-    height: 50px;
-  }
-  padding-bottom: 50px;
-}
-.jumbotron.hero-spacer{
-  padding-top: 1px;
-  padding-bottom: 30px;
-}
+//
+//.hero-spacer {
+//  margin-top: 50px;
+//}
+//
+//.hero-feature {
+//  margin-bottom: 30px;
+//}
+//
+//footer {
+//  margin: 50px 0;
+//}
+//
+//.search-box {
+//  background: white;
+//  .search-field {
+//    height: 50px;
+//    border-radius: 8px 0px 0px 8px;
+//    font-size: 20px;
+//    border: none;
+//  }
+//  select{
+//    height: 50px;
+//    border: none;
+//  }
+//  .field-container{
+//    padding-right: 0;
+//    margin-bottom: 0;
+//  }
+//  .submit-btn{
+//    border-radius: 0 8px 8px 0;
+//    height: 50px;
+//  }
+//  padding-bottom: 50px;
+//}
+//.jumbotron.hero-spacer{
+//  padding-top: 1px;
+//  padding-bottom: 30px;
+//}
 .pagination a, .pagination *{
   font-size: 20px;
   padding: 5px;
@@ -67,27 +74,27 @@ footer {
 .pagination{
   padding-left:33%;
 }
-.thumbnail > img, .thumbnail a > img{
-  height: 250px;
-}
-.field_with_errors {
-  padding: 0;
-  background-color: red;
-  display: block;
-}
-.organization-container {
-  .organization-links {
-    ul li {
-      width: 24%;
-    }
-  }
-  background-color: #f5f5f5;
-  border: 1px solid #e3e3e3;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-  margin: 20px;
-}
+//.thumbnail > img, .thumbnail a > img{
+//  height: 250px;
+//}
+//.field_with_errors {
+//  padding: 0;
+//  background-color: red;
+//  display: block;
+//}
+//.organization-container {
+//  .organization-links {
+//    ul li {
+//      width: 24%;
+//    }
+//  }
+//  background-color: #f5f5f5;
+//  border: 1px solid #e3e3e3;
+//  border-radius: 4px;
+//  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+//  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+//  margin: 20px;
+//}
 .company-color{
 background-color: #BA2586;
 }

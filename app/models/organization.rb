@@ -13,7 +13,7 @@ class Organization < ActiveRecord::Base
   GovernmentAgency=2
   InvestmentGroup=3
   OrganizationTypesFriendlyNames={Company=>'Company',GovernmentAgency=>'Government Agency',InvestmentGroup=>'Investment Group'}
-  OrganizationTypesColors={Company=>'company-color',GovernmentAgency=>'government-agency-color',InvestmentGroup=>'investment-agency-color'}
+  OrganizationTypesColors={Company=>'purpal_bg',GovernmentAgency=>'info_bg',InvestmentGroup=>'green_bg'}
   ProblemKeyWord='problems'
   AppKeyWord='app_areas'
   TechKeyWord='tech_areas'
@@ -30,6 +30,10 @@ class Organization < ActiveRecord::Base
 
   def app_areas
     self.application_area_list
+  end
+
+  def last_updated_at
+    self.updated_at.strftime("%B %d, %Y")
   end
 
   def total_tags_count

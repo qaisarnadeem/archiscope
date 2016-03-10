@@ -1,163 +1,174 @@
-<div class="col-xs-12">
-  <div class="col-xs-12 text-center">
-    <%=image_tag(@organization.logo.url(:thumb))%>
-  </div>
-  <div class="col-xs-12 text-center">
-    <h1><%=@organization.name%></h1>
-  </div>
-  <div class="col-xs-12 text-center">
-    <h3 class="<%=@organization.type_class%>">
-      <%=Organization::OrganizationTypesFriendlyNames[@organization.organization_type_id]%>
-    </h3>
-  </div>
-
-  <div class="col-xs-12 text-center">
-    <h4><%=@organization.address%></h4>
-  </div>
-</div>
-<div class="col-xs-12">
-  <ul class="nav nav-tabs">
-    <li class="active col-xs-4">
-      <a data-toggle="tab" href="#profile_tab">Profile</a>
-    </li>
-    <li class="col-xs-4">
-      <a data-toggle="tab" href="#areas_tab"><%=@organization.total_tags_count%> Areas of interest</a>
-    </li>
-    <li class="col-xs-4">
-      <a data-toggle="tab" href="#notes_tab"><%=@organization.notes.length%> Notes</a>
-    </li>
-  </ul>
-</div>
-<div class="tab-content">
-  <div id="profile_tab" class="tab-panetab-pane fade in active col-xs-12">
-    <div class="well">
-      <h3>About Organization</h3>
-      <p><%=@organization.about%></p>
-    </div>
-    <div class="well contacts">
-      <div class="col-xs-6"><h3>Contacts at this organization</h3></div>
-      <div class="col-xs-6">+ ADD</div>
-    </div>
-    <div class="well">
-      <%@organization.contacts.each do|contact|%>
-          <div class="col-xs-12">
-            <div class="col-xs-8">
-              <%=contact.full_name%> status
-            </div>
-            <div class="col-xs-4">
-              <div class="col-xs-2">
-                <%=link_to edit_contact_path(contact) do%>
-                    <i class="glyphicon glyphicon-pencil"></i>
-                <%end%>
-              </div>
-              <div class="col-xs-2">
-                <%=link_to contact_path(contact),
-                           :method => 'delete' do%>
-                    <i class="glyphicon glyphicon-remove"></i>
-                <%end%>
-              </div>
-            </div>
-            <div class="col-xs-12">
-              <%=contact.position%>
-            </div>
-            <div class="col-xs-12">
-              <%=contact.email%>
-            </div>
-            <div class="col-xs-12">
-              Referred by <%=contact.referred_by%>
-            </div>
-          </div>
-      <%end%>
-    </div>
-  </div>
-  <div id="areas_tab" class="tab-pane fade col-xs-12">
+<header id="header">
+  <div class="container">
     <div class="col-xs-12">
-      Technology Areas of Interest
-      <span class="pull-right">+ ADD</span>
-    </div>
-    <div class="well-col-xs-12">
-      <ul class="list-unstyled">
-        <%@organization.tech_areas do |tech_area|%>
-            <li>
-              <div class="col-xs-8">
-                <%=tech_area%>
-              </div>
-              <div class="col-xs-4">
-                <div class="col-xs-2">
-                  <i class="glyphicon glyphicon-pencil"></i>
-                </div>
-                <div class="col-xs-2">
-                  <%=link_to remove_tag_organization_path(id: @organization.id ,tag: tech_area,type: Organization::TechKeyWord),
-                             :method => 'delete' do%>
-                      <i class="glyphicon glyphicon-remove"></i>
-                  <%end%>
-                </div>
-              </div>
-            </li>
-        <%end%>
-      </ul>
-    </div>
-    <div class="col-xs-12">
-      Application Areas of Interest
-      <span class="pull-right">+ ADD</span>
-    </div>
-
-    <div class="well-col-xs-12">
-      <ul class="list-unstyled">
-        <%@organization.app_areas do |app_area|%>
-            <li>
-              <div class="col-xs-8">
-                <%=app_area%>
-              </div>
-              <div class="col-xs-4">
-                <div class="col-xs-2">
-                  <i class="glyphicon glyphicon-pencil"></i>
-                </div>
-                <div class="col-xs-2">
-                  <%=link_to remove_tag_organization_path(id: @organization.id ,tag: app_area,type: Organization::AppKeyWord),
-                             :method => 'delete' do%>
-                      <i class="glyphicon glyphicon-remove"></i>
-                  <%end%>
-                </div>
-              </div>
-            </li>
-        <%end%>
-      </ul>
-    </div>
-    <div class="col-xs-12">
-      Problems
-      <span class="pull-right">+ ADD</span>
-    </div>
-    <div class="well col-xs-12">
-      <ul class="list-unstyled">
-        <%@organization.problem_list.each do |problem|%>
-            <li>
-              <div class="col-xs-8">
-                <%=problem%>
-              </div>
-              <div class="col-xs-4">
-                <div class="col-xs-2">
-                  <i class="glyphicon glyphicon-pencil"></i>
-                </div>
-                <div class="col-xs-2">
-                  <%=link_to remove_tag_organization_path(id: @organization.id ,tag: problem,type: Organization::ProblemKeyWord),
-                             :method => 'delete' do%>
-                      <i class="glyphicon glyphicon-remove"></i>
-                  <%end%>
-                </div>
-              </div>
-            </li>
-        <%end%>
-      </ul>
-    </div>
-  </div>
-  <div id="notes_tab" class="tab-pane fade col-xs-12">
-    <div class="well col-xs-12">
-      <button onclick="$('#notes-form-container').slideToggle();">WRITE A NEW NOTE</button>
-      <div style="display: none" id="notes-form-container" class="notes-form">
-        <%=render :partial =>  "notes/form"%>
+      <div class="col-xs-2 p-0">
+        <div class="icon_bars">
+          <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas"> <span class="hamb-top"></span> <span class="hamb-middle"></span> <span class="hamb-bottom"></span> </button>
+        </div>
+      </div>
+      <div class="col-xs-8 p-0 text-center">
+        <div class="gover_icon">
+          <%=image_tag(@organization.logo.url(:thumb))%>
+        </div>
+        <h4 class="white-text font-28"><%=@organization.name%></h4>
+        <p class="white-text"><span class="number_class"><%=Organization::OrganizationTypesFriendlyNames[@organization.organization_type_id]%></span></p>
+        <p class="white-text font-16"><%=@organization.address%></p>
+      </div>
+      <div class="col-xs-2 p-0">
+        <div class="icon_bars pull-right">
+          <i class="fa fa-pencil"></i>
+        </div>
       </div>
     </div>
-    <%=render :partial => "notes/note", collection: @organization.notes%>
+    <div role="tabpanel">
+      <!-- Nav tabs -->
+      <ul class="app_menu m-0 mt-50" role="tablist">
+        <li role="presentation" class="active col-xs-4 text-center">
+          <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Profile</a>
+        </li>
+        <li role="presentation" class=" col-xs-4 text-center">
+          <a href="#tab" aria-controls="tab" role="tab" data-toggle="tab"><%=@organization.total_tags_count%> Areas of Interest</a>
+        </li>
+        <li role="presentation" class="col-xs-4 text-center">
+          <a href="#interest" aria-controls="interest" role="tab" data-toggle="tab"><%=@organization.notes.length%> Notes</a>
+        </li>
+      </ul>
+      <!-- Tab panes -->
+    </div>
   </div>
-</div>
+</header>
+<main id="main">
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+      <div class="col-xs-12 bg-grey">
+        <div class="container">
+          <div class="col-xs-12 p-0 mtb-30">
+            <h2 class="about_title">About Organization</h2>
+            <p class="font-18 light-text"><%=@organization.about%></p>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="col-xs-12">
+          <h3 class="about_title pull-left">CONTACTS AT THIS ORGANIZATION</h3>
+          <a class="pull-right add_option" href=""><i class="fa fa-plus"></i> ADD</a>
+        </div>
+        <div class="col-xs-12">
+          <ul class="gover_list">
+            <%@organization.contacts.each do|contact|%>
+                <li>
+                  <div class="col-xs-12">
+                    <h4 class="name-title pull-left"><%=contact.full_name%> status</h4>
+                    <div class="pull-right icon_edit_pincel">
+                      <%=link_to edit_contact_path(contact) ,class: 'pr-10' do%>
+                          <i class="fa fa-pencil"></i>
+                      <%end%>
+                      <%=link_to contact_path(contact),
+                                 :method => 'delete' do%>
+                          <i class="fa fa-times"></i>
+                      <%end%>
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                    <p class="light-text font-16"><%=contact.position%></p>
+                    <p class="light_blue font-18"><%=contact.email%></p>
+                    <p class="light-text font-18">Referred by <%=contact.referred_by%></p>
+                  </div>
+                </li>
+            <%end%>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane " id="tab">
+        <div class="col-xs-12">
+          Technology Areas of Interest
+          <span class="pull-right">+ ADD</span>
+        </div>
+        <div class="well-col-xs-12">
+          <ul class="list-unstyled">
+            <%@organization.tech_areas do |tech_area|%>
+                <li>
+                  <div class="col-xs-8">
+                    <%=tech_area%>
+                  </div>
+                  <div class="col-xs-4">
+                    <div class="col-xs-2">
+                      <i class="glyphicon glyphicon-pencil"></i>
+                    </div>
+                    <div class="col-xs-2">
+                      <%=link_to remove_tag_organization_path(id: @organization.id ,tag: tech_area,type: Organization::TechKeyWord),
+                                 :method => 'delete' do%>
+                          <i class="glyphicon glyphicon-remove"></i>
+                      <%end%>
+                    </div>
+                  </div>
+                </li>
+            <%end%>
+          </ul>
+        </div>
+        <div class="col-xs-12">
+          Application Areas of Interest
+          <span class="pull-right">+ ADD</span>
+        </div>
+
+        <div class="well-col-xs-12">
+          <ul class="list-unstyled">
+            <%@organization.app_areas do |app_area|%>
+                <li>
+                  <div class="col-xs-8">
+                    <%=app_area%>
+                  </div>
+                  <div class="col-xs-4">
+                    <div class="col-xs-2">
+                      <i class="glyphicon glyphicon-pencil"></i>
+                    </div>
+                    <div class="col-xs-2">
+                      <%=link_to remove_tag_organization_path(id: @organization.id ,tag: app_area,type: Organization::AppKeyWord),
+                                 :method => 'delete' do%>
+                          <i class="glyphicon glyphicon-remove"></i>
+                      <%end%>
+                    </div>
+                  </div>
+                </li>
+            <%end%>
+          </ul>
+        </div>
+        <div class="col-xs-12">
+          Problems
+          <span class="pull-right">+ ADD</span>
+        </div>
+        <div class="well col-xs-12">
+          <ul class="list-unstyled">
+            <%@organization.problem_list.each do |problem|%>
+                <li>
+                  <div class="col-xs-8">
+                    <%=problem%>
+                  </div>
+                  <div class="col-xs-4">
+                    <div class="col-xs-2">
+                      <i class="glyphicon glyphicon-pencil"></i>
+                    </div>
+                    <div class="col-xs-2">
+                      <%=link_to remove_tag_organization_path(id: @organization.id ,tag: problem,type: Organization::ProblemKeyWord),
+                                 :method => 'delete' do%>
+                          <i class="glyphicon glyphicon-remove"></i>
+                      <%end%>
+                    </div>
+                  </div>
+                </li>
+            <%end%>
+          </ul>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="interest">
+        <div class="well col-xs-12">
+          <button onclick="$('#notes-form-container').slideToggle();">WRITE A NEW NOTE</button>
+          <div style="display: none" id="notes-form-container" class="notes-form">
+            <%=render :partial =>  "notes/form"%>
+          </div>
+        </div>
+        <%=render :partial => "notes/note", collection: @organization.notes%>
+    </div>
+  </div>
+</main>
