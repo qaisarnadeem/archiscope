@@ -1,19 +1,20 @@
 <%grouped_result=Organization.all_tech_areas_categorized
 %>
-<ul class="nav nav-tabs">
-  <li class="dropdown">
-    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Choose Type <b class="caret"></b></a>
-    <ul class="dropdown-menu">
-      <li><a data-toggle="tab" href="#tech_areas_tab">Tech Areas</a></li>
-      <li><a data-toggle="tab" href="#app_areas_tab">Application Areas</a></li>
-      <li><a data-toggle="tab" href="#problems_tab">Problems</a></li>
-    </ul>
-  </li>
-</ul>
+<div class="col-xs-12 bg-grey">
+  <div class="container">
+    <div class="col-xs-12 p-0">
+      <select class="form-control custom_field" id="tab-chooser">
+        <option value="#tech_areas_tab">Technology Areas of Interest</option>
+        <option value="#app_areas_tab">Application Areas</option>
+        <option value="#problems_tab">Problems</option>
+      </select>
+    </div>
+  </div>
+</div>
 <div class="row">
   <div class="col-xs-12">
-    <div class="tab-content">
-      <div id="tech_areas_tab" class="tab-pane fade">
+    <div class="tab-content tech-areas-tabs">
+      <div id="tech_areas_tab" class="tab-pane fade active in">
         <%=render :partial => "tags_list",:locals => {:grouped_result=>grouped_result['technology_areas'] || {},:filter_type=>Organization::TechKeyWord}%>
       </div>
       <div id="app_areas_tab" class="tab-pane fade">
@@ -27,6 +28,12 @@
 </div>
 
 
+<script type="text/javascript">
+  $('#tab-chooser').change(function(){
+    $('.tech-areas-tabs .active.in').removeClass('active in');
+      $($(this).val()).addClass('active in');
+  });
+</script>
 
 
 

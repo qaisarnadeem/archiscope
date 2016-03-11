@@ -1,28 +1,35 @@
-<ul class="list-unstyled">
-  <%grouped_result.group_by(&:tag_name).each do |tag_name,tagging|%>
-      <%=link_to root_path(q: tag_name,type:filter_type) do%>
-          <li>
-            <div class="col-xs-2"><%=tagging.length%></div>
-            <div class="col-xs-7"><%=tag_name%></div>
-            <div class="col-xs-3">
-              <%count_hash=tagging.group_by(&:organization_type_id)%>
-              <%if count_hash[Organization::Company]%>
-                  <div class="col-xs-1 <%=Organization::OrganizationTypesColors[Organization::Company]%>">
-                    <%=count_hash[Organization::Company].first.count_all%>
+<div class="container">
+  <div class="col-xs-12 mtb-20">
+    <table class="table table_custom table-hover white-bg">
+      <tbody>
+      <%grouped_result.group_by(&:tag_name).each do |tag_name,tagging|%>
+          <tr>
+            <%=link_to root_path(q: tag_name,type:filter_type) do%>
+                <td class="bt-0 br-1" width="50 " align="center"><%=tagging.length%></td>
+                <td class="bt-0"><%=tag_name%>
+                  <div class="pull-right">
+                    <%count_hash=tagging.group_by(&:organization_type_id)%>
+                    <%if count_hash[Organization::Company]%>
+                        <span class="meroon_bg">
+                          <%=count_hash[Organization::Company].first.count_all%>
+                        </span>
+                    <%end%>
+                    <%if count_hash[Organization::GovernmentAgency]%>
+                        <span class="yello_bg">
+                          <%=count_hash[Organization::GovernmentAgency].first.count_all%>
+                        </span>
+                    <%end%>
+                    <%if count_hash[Organization::InvestmentGroup]%>
+                        <span class="green_bg">
+                          <%=count_hash[Organization::InvestmentGroup].first.count_all%>
+                        </span>
+                    <%end%>
                   </div>
-              <%end%>
-              <%if count_hash[Organization::GovernmentAgency]%>
-                  <div class="col-xs-1 <%=Organization::OrganizationTypesColors[Organization::GovernmentAgency]%>">
-                    <%=count_hash[Organization::GovernmentAgency].first.count_all%>
-                  </div>
-              <%end%>
-              <%if count_hash[Organization::InvestmentGroup]%>
-                  <div class="col-xs-1 <%=Organization::OrganizationTypesColors[Organization::InvestmentGroup]%>">
-                    <%=count_hash[Organization::InvestmentGroup].first.count_all%>
-                  </div>
-              <%end%>
-            </div>
-          </li>
+                </td>
+            <%end%>
+          </tr>
       <%end%>
-  <%end%>
-</ul>
+      </tbody>
+    </table>
+  </div>
+</div>

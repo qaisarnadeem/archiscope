@@ -1,25 +1,20 @@
-<header id="header">
-  <div class="container">
-    <div class="col-xs-12">
-      <div class="col-xs-2 p-0">
-        <div class="icon_bars">
-          <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas"> <span class="hamb-top"></span> <span class="hamb-middle"></span> <span class="hamb-bottom"></span> </button>
-        </div>
+
+<%content_for :top_header do%>
+    <div class="col-xs-8 p-0 text-center">
+      <div class="gover_icon">
+        <%=image_tag(@organization.logo.url(:thumb))%>
       </div>
-      <div class="col-xs-8 p-0 text-center">
-        <div class="gover_icon">
-          <%=image_tag(@organization.logo.url(:thumb))%>
-        </div>
-        <h4 class="white-text font-28"><%=@organization.name%></h4>
-        <p class="white-text"><span class="number_class"><%=Organization::OrganizationTypesFriendlyNames[@organization.organization_type_id]%></span></p>
-        <p class="white-text font-16"><%=@organization.address%></p>
-      </div>
-      <div class="col-xs-2 p-0">
-        <div class="icon_bars pull-right">
-          <i class="fa fa-pencil"></i>
-        </div>
+      <h4 class="white-text font-28"><%=@organization.name%></h4>
+      <p class="white-text"><span class="number_class"><%=Organization::OrganizationTypesFriendlyNames[@organization.organization_type_id]%></span></p>
+      <p class="white-text font-16"><%=@organization.address%></p>
+    </div>
+    <div class="col-xs-2 p-0">
+      <div class="icon_bars pull-right">
+        <i class="fa fa-pencil"></i>
       </div>
     </div>
+<%end%>
+<%content_for :top_header_container do%>
     <div role="tabpanel">
       <!-- Nav tabs -->
       <ul class="app_menu m-0 mt-50" role="tablist">
@@ -35,8 +30,7 @@
       </ul>
       <!-- Tab panes -->
     </div>
-  </div>
-</header>
+<%end%>
 <main id="main">
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="home">
@@ -81,25 +75,22 @@
       </div>
     </div>
     <div role="tabpanel" class="tab-pane " id="tab">
-        <div class="col-xs-12">
-          Technology Areas of Interest
-          <span class="pull-right">+ ADD</span>
+      <div class="container">
+        <div class="col-xs-12 mtb-20">
+          <h3 class="about_title pull-left">Technology Areas of Interest</h3>
+          <a class="pull-right add_option" href=""><i class="fa fa-plus"></i> ADD</a>
         </div>
-        <div class="well-col-xs-12">
-          <ul class="list-unstyled">
-            <%@organization.tech_areas do |tech_area|%>
-                <li>
-                  <div class="col-xs-8">
-                    <%=tech_area%>
-                  </div>
-                  <div class="col-xs-4">
-                    <div class="col-xs-2">
-                      <i class="glyphicon glyphicon-pencil"></i>
-                    </div>
-                    <div class="col-xs-2">
+        <div class="col-xs-12">
+          <ul class="gover_list">
+            <%@organization.tech_areas.each do |tech_area|%>
+                <li class="p-10">
+                  <div class="col-xs-12">
+                    <h4 class="font-26 pull-left light-text"><%=tech_area%></h4>
+                    <div class="pull-right icon_edit_pincel mt-10">
+                      <a class="pr-10" href=""><i class="fa fa-pencil"></i></a>
                       <%=link_to remove_tag_organization_path(id: @organization.id ,tag: tech_area,type: Organization::TechKeyWord),
                                  :method => 'delete' do%>
-                          <i class="glyphicon glyphicon-remove"></i>
+                          <i class="fa fa-times"></i>
                       <%end%>
                     </div>
                   </div>
@@ -107,26 +98,21 @@
             <%end%>
           </ul>
         </div>
-        <div class="col-xs-12">
-          Application Areas of Interest
-          <span class="pull-right">+ ADD</span>
+        <div class="col-xs-12 mtb-20">
+          <h3 class="about_title pull-left">Application Areas of Interest</h3>
+          <a class="pull-right add_option" href=""><i class="fa fa-plus"></i> ADD</a>
         </div>
-
-        <div class="well-col-xs-12">
-          <ul class="list-unstyled">
-            <%@organization.app_areas do |app_area|%>
-                <li>
-                  <div class="col-xs-8">
-                    <%=app_area%>
-                  </div>
-                  <div class="col-xs-4">
-                    <div class="col-xs-2">
-                      <i class="glyphicon glyphicon-pencil"></i>
-                    </div>
-                    <div class="col-xs-2">
-                      <%=link_to remove_tag_organization_path(id: @organization.id ,tag: app_area,type: Organization::AppKeyWord),
+        <div class="col-xs-12">
+          <ul class="gover_list">
+            <%@organization.app_areas.each do |app_area|%>
+                <li class="p-10">
+                  <div class="col-xs-12">
+                    <h4 class="font-26 pull-left light-text"><%=app_area%></h4>
+                    <div class="pull-right icon_edit_pincel mt-10">
+                      <a class="pr-10" href=""><i class="fa fa-pencil"></i></a>
+                      <%=link_to remove_tag_organization_path(id: @organization.id ,tag: tech_area,type: Organization::AppKeyWord),
                                  :method => 'delete' do%>
-                          <i class="glyphicon glyphicon-remove"></i>
+                          <i class="fa fa-times"></i>
                       <%end%>
                     </div>
                   </div>
@@ -134,25 +120,21 @@
             <%end%>
           </ul>
         </div>
-        <div class="col-xs-12">
-          Problems
-          <span class="pull-right">+ ADD</span>
+        <div class="col-xs-12 mtb-20">
+          <h3 class="about_title pull-left">Problems</h3>
+          <a class="pull-right add_option" href=""><i class="fa fa-plus"></i> ADD</a>
         </div>
-        <div class="well col-xs-12">
-          <ul class="list-unstyled">
+        <div class="col-xs-12">
+          <ul class="gover_list">
             <%@organization.problem_list.each do |problem|%>
-                <li>
-                  <div class="col-xs-8">
-                    <%=problem%>
-                  </div>
-                  <div class="col-xs-4">
-                    <div class="col-xs-2">
-                      <i class="glyphicon glyphicon-pencil"></i>
-                    </div>
-                    <div class="col-xs-2">
+                <li class="p-10">
+                  <div class="col-xs-12">
+                    <h4 class="font-26 pull-left light-text"><%=problem%></h4>
+                    <div class="pull-right icon_edit_pincel mt-10">
+                      <a class="pr-10" href=""><i class="fa fa-pencil"></i></a>
                       <%=link_to remove_tag_organization_path(id: @organization.id ,tag: problem,type: Organization::ProblemKeyWord),
                                  :method => 'delete' do%>
-                          <i class="glyphicon glyphicon-remove"></i>
+                          <i class="fa fa-times"></i>
                       <%end%>
                     </div>
                   </div>
@@ -160,15 +142,18 @@
             <%end%>
           </ul>
         </div>
+      </div>
     </div>
     <div role="tabpanel" class="tab-pane" id="interest">
-        <div class="well col-xs-12">
-          <button onclick="$('#notes-form-container').slideToggle();">WRITE A NEW NOTE</button>
-          <div style="display: none" id="notes-form-container" class="notes-form">
-            <%=render :partial =>  "notes/form"%>
-          </div>
+      <div class="container">
+        <div class="write_DIV">
+          <h3><button onclick="$('#notes-form-container').slideToggle();">write a new note</button></h3>
         </div>
-        <%=render :partial => "notes/note", collection: @organization.notes%>
+        <div style="display: none" id="notes-form-container" class="notes-form">
+          <%=render :partial =>  "notes/form"%>
+        </div>
+      </div>
+      <%=render :partial => "notes/note", collection: @organization.notes%>
     </div>
   </div>
 </main>

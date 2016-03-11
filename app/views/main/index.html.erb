@@ -1,18 +1,12 @@
-<header id="header">
-  <div class="container">
-    <div class="col-xs-12">
-      <div class="col-xs-2 p-0">
-        <div class="icon_bars">
-          <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas"> <span class="hamb-top"></span> <span class="hamb-middle"></span> <span class="hamb-bottom"></span> </button>
-        </div>
-      </div>
-      <div class="col-xs-8 p-0 text-center logo"><img src="/assets/logo1.png"></div>
-      <div class="col-xs-2 p-0">
-        <div class="icon_bars pull-right">
-          <i class="fa fa-plus"></i>
-        </div>
+<%content_for :top_header do%>
+    <div class="col-xs-8 p-0 text-center logo"><img src="/assets/logo1.png"></div>
+    <div class="col-xs-2 p-0">
+      <div class="icon_bars pull-right">
+        <i class="fa fa-plus"></i>
       </div>
     </div>
+<%end%>
+<%content_for :top_header do%>
     <div role="tabpanel">
       <ul class="app_menu m-0 mt-50" role="tablist">
         <li role="presentation" class="col-xs-4 text-center">
@@ -25,10 +19,8 @@
           <a href="#interest" aria-controls="interest" role="tab" data-toggle="tab">areas of interest</a>
         </li>
       </ul>
-      <!-- Tab panes -->
     </div>
-  </div>
-</header>
+<%end%>
 <main id="main">
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane" id="home">
@@ -36,26 +28,14 @@
     <div role="tabpanel" class="tab-pane active" id="tab">
       <div class="col-xs-12 bg-grey">
         <div class="container">
-            <%=form_tag request.path ,:class=>'',:method=>:get do%>
+          <%=form_tag request.path ,:class=>'',:method=>:get do%>
               <div class="col-xs-7">
-                      <%=text_field_tag 'q' , params[:q],autocomplete: :off,:placeholder=>'Search....',:class=>'form-control custom_field',:id=>'query-search'%>
+                <%=text_field_tag 'q' , params[:q],autocomplete: :off,:placeholder=>'Search....',:class=>'form-control custom_field',:id=>'query-search'%>
               </div>
               <div class="col-xs-5 ">
                 <%=select_tag "type",options_for_search_types(params[:type]) ,class: "form-control",id: 'type-chosen'%>
-             </div>
+              </div>
           <%end%>
-          <!--<div class="col-xs-5 ">-->
-            <!--<div onclick="optoin_slide()" class="pull-right font-20 weight_bold">-->
-              <!--Techs <i class="fa fa-glass"></i>-->
-            <!--</div>-->
-            <!--<div id="show_down" class="col-xs-12 p-0 pos-r" style="display:none;">-->
-              <!--<ul class="teach_list">-->
-                <!--<li><a href="">kjdhkjdh</a></li>-->
-                <!--<li><a href="">kjdhkjdh</a></li>-->
-                <!--<li><a href="">kjdhkjdh</a></li>-->
-              <!--</ul>-->
-            <!--</div>-->
-          <!--</div>-->
         </div>
       </div>
       <div class="container">

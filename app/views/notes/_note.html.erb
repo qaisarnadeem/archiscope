@@ -1,25 +1,20 @@
-<div class="col-xs-12">
-  <div class="col-xs-12">
-    <div class="col-xs-2">
-      <%=image_tag note.user.avatar.url(:thumb)%>
-    </div>
-    <div class="col-xs-8">
-      <div class="col-xs-12">
-        <%=note.user.full_name%>
+<div class="full_width ptb-20 <%='white-bg' if note_counter.odd?%>">
+  <div class="container">
+    <div class="col-xs-12 p-0">
+      <%=image_tag note.user.avatar.url(:thumb),class:"pull-left pr-10"%>
+      <div class="pull-left">
+        <h4 class="name-title"><%=note.user.full_name%></h4>
+        <p class="light-text font-16"><%=time_ago_in_words note.updated_at%> ago</p>
       </div>
-      <div class="col-xs-12">
-        <%=time_ago_in_words note.updated_at%> ago
+      <div class="pull-right icon_edit_pincel mt-10">
+        <a class="pr-10" href=""><i class="fa fa-pencil"></i></a>
+        <%=link_to note_path(note),:method => 'delete' do%>
+            <i class="fa fa-times"></i>
+        <%end%>
       </div>
     </div>
-    <div class="col-xs-2">
-      Edit, <%=link_to note_path(note),:method => 'delete' do%>
-          <i class="glyphicon glyphicon-remove"></i>
-      <%end%>
+    <div class="col-xs-12 p-0 mtb-20">
+      <p class="light-text font-16"><%=note.description%></p>
     </div>
-  </div>
-  <div class="col-xs-12">
-    <p>
-      <%=note.description%>
-    </p>
   </div>
 </div>
