@@ -12,5 +12,4 @@
 .idea/
 /public/system
 !/log/.keep
-/config/database.yml
 /tmp
