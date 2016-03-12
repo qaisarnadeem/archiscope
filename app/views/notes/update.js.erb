@@ -1,2 +1,2 @@
 $('#note_<%=@note.id %>').replaceWith("<%=escape_javascript(render :partial=>"note",:locals=>{:note=>@note}) %>");
-$('#notes-form').modal('hide');
+$('#notes-form').modal('hide');$('.modal-backdrop.fade.in').remove();

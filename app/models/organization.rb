@@ -6,7 +6,7 @@ class Organization < ActiveRecord::Base
   attr_accessor :logo
 
   validates_presence_of :name,:organization_type_id
-
+  validates_uniqueness_of :name, :case_sensitive => false
   has_attached_file :logo, styles: { medium: "300x300>", thumb: "112x112>" }, default_url: "/assets/:style/missing.png"
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
   Company=1
@@ -17,6 +17,7 @@ class Organization < ActiveRecord::Base
   ProblemKeyWord='problems'
   AppKeyWord='application_areas'
   TechKeyWord='technology_areas'
+
 
   def tech_areas
     self.technology_area_list
@@ -51,6 +52,10 @@ class Organization < ActiveRecord::Base
     Organization.tagged_with([tag_name],:wild=>true,:on=>tag_type,:any=>true)
   end
 
+  def self.tags_count_by_context
+    ActsAsTaggableOn::Tagging.group(:context).count
+  end
+
   def find_all_matching_tags name,context=nil
     return ActsAsTaggableOn::Tagging.includes(:tag).where("name like ? ","'#{name}%'").order(:name).uniq unless context
     ActsAsTaggableOn::Tagging.includes(:tag).where(context: context).where("name like ? ","'#{name}%'").order(:name).uniq
@@ -62,6 +67,11 @@ class Organization < ActiveRecord::Base
                 count(taggings.id) as count_all').
         joins(:tag).joins('inner join organizations on organizations.id = taggable_id').where(:taggable_type=>"Organization").
         group('taggings.context, tags.name,organizations.organization_type_id').group_by &:context
+  end
+
+  def get_complete_url
+    return "http://#{self.url}" unless self.url.blank? || self.url.start_with?("http")
+    return self.url
   end
 
 end

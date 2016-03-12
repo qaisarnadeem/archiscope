@@ -1,0 +1,53 @@
+<div class="modal fade" id="users-form">
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put ,remote: true,multipart: true}) do |f| %>
+      <div class="modal-dialog mb-20">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class=" mb-20">
+              <%= f.text_field :first_name, autofocus: true, class: "form-control" ,:placeholder=>'First Name'%>
+              <%=f.error_span(:first_name) %>
+            </div>
+            <div class=" mb-20">
+              <%= f.text_field :last_name, class: "form-control" ,:placeholder=>"Last Name"%>
+              <%=f.error_span(:last_name) %>
+            </div>
+            <%if current_user.is_admin?%>
+                <div class=" mb-20">
+                  <%= f.select :role_id, options_for_user_roles,{:prompt=>'Choose User Role'},class: "form-control" %>
+                  <%=f.error_span(:role_id) %>
+                </div>
+            <%end%>
+            <div class=" mb-20">
+              <%= f.email_field :email, class: "form-control" ,:placeholder=>"Email"%>
+              <%=f.error_span(:email) %>
+            </div>
+            <div class=" mb-20">
+              <%= image_tag(resource.avatar.url(:thumb))%>
+            </div>
+            <div class=" mb-20">
+              <%= f.file_field :avatar, class: "form-control" ,:placeholder=>"Avatar"%>
+              <%=f.error_span(:avatar) %>
+            </div>
+            <div class=" mb-20">
+              <%= f.password_field :password, class: "form-control" ,:placeholder=>"Password"%>
+              <%=f.error_span(:password) %>
+            </div>
+            <div class=" mb-20">
+              <%= f.password_field :password_confirmation, class: "form-control" ,:placeholder=>"Retype Password"%>
+              <%=f.error_span(:password_confirmation) %>
+            </div>
+            <div class="mb-20">
+              <%= f.password_field :current_password, class: "form-control" ,:placeholder=>"Current Password"%>
+              <%=f.error_span(:current_password) %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="custom_button" >Save</button>
+        <br/>
+        <br/>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+  <%end%>
+</div>

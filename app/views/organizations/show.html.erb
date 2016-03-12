@@ -2,7 +2,9 @@
 <%content_for :top_header do%>
     <div class="col-xs-8 p-0 text-center">
       <div class="gover_icon">
-        <%=image_tag(@organization.logo.url(:thumb))%>
+        <%=link_to @organization.get_complete_url ,target: '_blank' do%>
+            <%=image_tag(@organization.logo.url(:thumb))%>
+        <%end%>
       </div>
       <h4 class="white-text font-28"><%=@organization.name%></h4>
       <p class="white-text"><span class="number_class"><%=Organization::OrganizationTypesFriendlyNames[@organization.organization_type_id]%></span></p>
@@ -10,7 +12,7 @@
     </div>
     <div class="col-xs-2 p-0">
       <div class="icon_bars pull-right">
-        <i class="fa fa-pencil"></i>
+        <span class="top-link" data-href="<%=edit_organization_path(@organization)%>" onclick="handle_contact_updation(this)"><i class="fa fa-pencil"></i></span>
       </div>
     </div>
 <%end%>
@@ -113,7 +115,7 @@
     <%end%>
   </div>
 
-<div id="contact-form-container"></div>
+  <div id="contact-form-container"></div>
 
 
 </main>

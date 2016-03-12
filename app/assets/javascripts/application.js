@@ -100,3 +100,6 @@ function handle_note_removal(elem){
         }
     });
 }
+$('body').bind('hidden.bs.modal', function(e){
+    $('.modal-backdrop.fade.in').remove();
+});

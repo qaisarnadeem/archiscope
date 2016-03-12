@@ -12,6 +12,7 @@ class Ability
          can :manage , Organization
          can :manage,Note
          can :manage,Contact
+         can :update,User,:id=>user.id
 
          #can :manage ,Organization ,user_id: user.id
          #can :create,Note

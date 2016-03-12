@@ -1,2 +1,2 @@
 $('#contact_<%=@contact.id %>').replaceWith("<%=escape_javascript(render :partial=>"contact",:locals=>{:contact=>@contact}) %>");
-$('#contacts-form').modal('hide');
+$('#contacts-form').modal('hide');$('.modal-backdrop.fade.in').remove();

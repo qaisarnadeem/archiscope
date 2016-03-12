@@ -1,51 +1,44 @@
-<%= form_for @organization, :html => { :class => "form-horizontal organization" ,multipart: true} do |f| %>
-    <div class="form-group">
-      <%= f.label :name, :class => 'control-label col-lg-2' %>
-      <div class="col-lg-10">
-        <%= f.text_field :name, :class => 'form-control' %>
+<div class="modal fade" id="organizations-form">
+  <%= form_for @organization, :html => { :class => "form-horizontal organization" ,multipart: true,remote:true} do |f| %>
+      <div class="modal-dialog mb-20">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="mb-20">
+              <%= f.text_field :name, :class => 'form-control' ,:placeholder=>"Name" %>
+              <%=f.error_span(:name) %>
+            </div>
+            <div class="left-inner-addon mb-20">
+              <span class="icon-user">http://</span>
+              <%= f.text_field :url, :class => 'form-control' ,:placeholder=>"www.example.com" %>
+              <%=f.error_span(:url) %>
+            </div>
+            <div class="mb-20">
+              <%= f.select :organization_type_id, options_for_organization_types,{prompt: 'Choose Type'},:class => 'form-control' %>
+              <%=f.error_span(:organization_type_id) %>
+            </div>
+            <div class="mb-20">
+              <%= f.text_area :address, :class => 'form-control' ,:placeholder=>"Address"%>
+              <%=f.error_span(:address) %>
+            </div>
+            <div class="mb-20">
+              <%= image_tag @organization.logo.url(:thumb)%>
+            </div>
+            <div class="mb-20">
+              <%= f.file_field :logo, :class => 'form-control' %>
+              <%=f.error_span(:logo_file_name) %>
+            </div>
+            <div class="mb-20">
+              <%= f.text_area :about, :class => 'form-control' ,:placeholder=>"About"%>
+              <%=f.error_span(:about) %>
+            </div>
+          </div>
+        </div>
       </div>
-      <%=f.error_span(:name) %>
-    </div>
-    <div class="form-group">
-      <%= f.label :Type, :class => 'control-label col-lg-2' %>
-      <div class="col-lg-10">
-        <%= f.select :organization_type_id, options_for_organization_types,{prompt: 'Choose Type'},:class => 'form-control' %>
+      <div class="text-center">
+        <button type="submit" class="custom_button" >Save</button>
+        <br/>
+        <br/>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
       </div>
-      <%=f.error_span(:organization_type_id) %>
-    </div>
-    <div class="form-group">
-      <%= f.label :Location, :class => 'control-label col-lg-2' %>
-      <div class="col-lg-10">
-        <%= f.text_field :address, :class => 'form-control' %>
-      </div>
-      <%=f.error_span(:address) %>
-    </div>
-    <div class="form-group">
-      <%= f.label :logo, :class => 'control-label col-lg-2' %>
-      <div class="col-lg-10">
-        <%= image_tag @organization.logo.url(:thumb)%>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :Logo, :class => 'control-label col-lg-2' %>
-      <div class="col-lg-10">
-        <%= f.file_field :logo, :class => 'form-control' %>
-      </div>
-      <%=f.error_span(:logo_file_name) %>
-    </div>
-    <div class="form-group">
-      <%= f.label :about, :class => 'control-label col-lg-2' %>
-      <div class="col-lg-10">
-        <%= f.text_area :about, :class => 'form-control' %>
-      </div>
-      <%=f.error_span(:about) %>
-    </div>
-    <div class="form-group">
-      <div class="col-lg-offset-2 col-lg-10">
-        <%= f.submit nil, :class => 'btn btn-primary' %>
-        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                    organizations_path, :class => 'btn btn-default' %>
-      </div>
-    </div>
-
-<% end %>
+  <%end%>
+</div>

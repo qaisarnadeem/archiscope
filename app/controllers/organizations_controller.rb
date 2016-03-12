@@ -5,6 +5,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
+    redirect_to :root unless current_user.is_admin?
     @organizations = Organization.all
   end
 
@@ -16,11 +17,19 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations/new
   def new
+    authorize! :create, Organization
     @organization = Organization.new
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /organizations/1/edit
   def edit
+    authorize! :update, Organization
+    respond_to do |format|
+      format.js
+    end
   end
 
   def remove_tag
@@ -67,13 +76,14 @@ class OrganizationsController < ApplicationController
   # POST /organizations
   # POST /organizations.json
   def create
+    authorize! :create, Organization
     @organization = Organization.new(organization_params)
     respond_to do |format|
       if @organization.save
-        format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
+        format.js
         format.json { render :show, status: :created, location: @organization }
       else
-        format.html { render :new }
+        format.js { render :new }
         format.json { render json: @organization.errors, status: :unprocessable_entity }
       end
     end
@@ -82,8 +92,10 @@ class OrganizationsController < ApplicationController
   # PATCH/PUT /organizations/1
   # PATCH/PUT /organizations/1.json
   def update
+    authorize! :update, Organization
     respond_to do |format|
       if @organization.update(organization_params)
+        format.js
       else
         format.js { render :edit }
       end
@@ -108,7 +120,7 @@ class OrganizationsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def organization_params
-    params.require(:organization).permit(:name, :organization_type_id, :address, :about, :user_id,:tag_list,:logo)
+    params.require(:organization).permit(:name, :organization_type_id, :address, :about, :user_id,:tag_list,:logo,:url)
   end
 
   def set_tag_params

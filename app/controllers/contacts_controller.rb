@@ -30,7 +30,7 @@ class ContactsController < ApplicationController
       if @contact.save
         format.js
       else
-        format.js { render :new } and return
+        format.js { render :new }
       end
     end
   end

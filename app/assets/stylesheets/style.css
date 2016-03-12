@@ -687,9 +687,7 @@ h4.dark_blue {
 }
 
 .modal-open .modal {
-    width: 619px;
     margin: 0 auto;
-    top: 28%;
 }
 
 .close {
