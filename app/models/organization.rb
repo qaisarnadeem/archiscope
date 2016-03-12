@@ -7,7 +7,7 @@ class Organization < ActiveRecord::Base
 
   validates_presence_of :name,:organization_type_id
 
-  has_attached_file :logo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/assets/:style/missing.png"
+  has_attached_file :logo, styles: { medium: "300x300>", thumb: "112x112>" }, default_url: "/assets/:style/missing.png"
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
   Company=1
   GovernmentAgency=2
@@ -15,8 +15,8 @@ class Organization < ActiveRecord::Base
   OrganizationTypesFriendlyNames={Company=>'Company',GovernmentAgency=>'Government Agency',InvestmentGroup=>'Investment Group'}
   OrganizationTypesColors={Company=>'purpal_bg',GovernmentAgency=>'info_bg',InvestmentGroup=>'green_bg'}
   ProblemKeyWord='problems'
-  AppKeyWord='app_areas'
-  TechKeyWord='tech_areas'
+  AppKeyWord='application_areas'
+  TechKeyWord='technology_areas'
 
   def tech_areas
     self.technology_area_list

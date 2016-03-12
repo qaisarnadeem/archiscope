@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="col-xs-12">
+    <h3 class="about_title pull-left">CONTACTS AT THIS ORGANIZATION</h3>
+    <a class="pull-right add_option" onclick="handle_contact_updation(this);" data-href="<%=new_contact_path(:organization_id=>@organization.id)%>" href="javascript:void(0)"><i class="fa fa-plus"></i> ADD</a>
+  </div>
+  <div class="col-xs-12">
+    <ul class="gover_list contacts-container">
+      <%@organization.contacts.each do|contact|%>
+          <li class="contact" id="contact_<%=contact.id%>">
+            <div class="col-xs-12">
+              <h4 class="name-title pull-left"><%=contact.full_name%> status</h4>
+              <div class="pull-right icon_edit_pincel">
+                <a class="pr-10" data-href="<%=edit_contact_path(contact)%>" href="javascript:void(0)" onclick="handle_contact_updation(this);"><i class="fa fa-pencil"></i></a>
+                <%=link_to 'javascript:void(0)', 'data-href'=>contact_path(contact) ,:onclick=>'handle_contacts_removal(this);' do%>
+                    <i class="fa fa-times"></i>
+                <%end%>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <p class="light-text font-16"><%=contact.position%></p>
+              <p class="light_blue font-18"><%=contact.email%></p>
+              <p class="light-text font-18">Referred by <%=contact.referred_by%></p>
+            </div>
+          </li>
+      <%end%>
+    </ul>
+  </div>
+</div>

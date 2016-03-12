@@ -33,7 +33,15 @@
     $('.tech-areas-tabs .active.in').removeClass('active in');
       $($(this).val()).addClass('active in');
   });
+        $('.tags-table tr').click(function(){
+            window.location.href=$(this).data().href
+        });
 </script>
+<style type="text/css">
+    .tags-table tr{
+        cursor: pointer;
+    }
+</style>
 
 
 

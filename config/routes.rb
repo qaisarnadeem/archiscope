@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   resources :notes
   resources :organizations do
     member do
-      get :add_tech_area
-      get :add_app_area
-      get :add_problem
+      post :add_tech_area
+      post :add_app_area
+      post :add_problem
       delete :remove_tag ,as: :remove_tag
     end
   end

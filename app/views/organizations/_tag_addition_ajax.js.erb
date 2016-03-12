@@ -1,0 +1,5 @@
+<%unless params[:previous_tag].present?%>
+    $('<%=selector%>').append("<%=escape_javascript(render :partial => 'tech_area' ,:locals=>{:tech_area=>params[:tag]})%>");
+    handle_tag_updation();
+    handle_tags_removal();
+<%end%>

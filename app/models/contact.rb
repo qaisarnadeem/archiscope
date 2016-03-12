@@ -5,6 +5,9 @@ class Contact < ActiveRecord::Base
   NotAvailable=2
   FreidnlyStatusName={Available=>'Available',NotAvailable=>'Not Available'}
 
+  validates_presence_of :first_name,:last_name
+  validates_uniqueness_of :email,scope:[:organization_id]
+
   def full_name
     "#{first_name} #{last_name}"
   end

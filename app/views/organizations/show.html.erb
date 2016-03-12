@@ -42,118 +42,97 @@
           </div>
         </div>
       </div>
-      <div class="container">
-        <div class="col-xs-12">
-          <h3 class="about_title pull-left">CONTACTS AT THIS ORGANIZATION</h3>
-          <a class="pull-right add_option" href=""><i class="fa fa-plus"></i> ADD</a>
-        </div>
-        <div class="col-xs-12">
-          <ul class="gover_list">
-            <%@organization.contacts.each do|contact|%>
-                <li>
-                  <div class="col-xs-12">
-                    <h4 class="name-title pull-left"><%=contact.full_name%> status</h4>
-                    <div class="pull-right icon_edit_pincel">
-                      <%=link_to edit_contact_path(contact) ,class: 'pr-10' do%>
-                          <i class="fa fa-pencil"></i>
-                      <%end%>
-                      <%=link_to contact_path(contact),
-                                 :method => 'delete' do%>
-                          <i class="fa fa-times"></i>
-                      <%end%>
-                    </div>
-                  </div>
-                  <div class="col-xs-12">
-                    <p class="light-text font-16"><%=contact.position%></p>
-                    <p class="light_blue font-18"><%=contact.email%></p>
-                    <p class="light-text font-18">Referred by <%=contact.referred_by%></p>
-                  </div>
-                </li>
-            <%end%>
-          </ul>
-        </div>
-      </div>
+      <%= render :partial => 'contacts' %>
     </div>
     <div role="tabpanel" class="tab-pane " id="tab">
       <div class="container">
         <div class="col-xs-12 mtb-20">
           <h3 class="about_title pull-left">Technology Areas of Interest</h3>
-          <a class="pull-right add_option" href=""><i class="fa fa-plus"></i> ADD</a>
+          <a class="pull-right add_option add_edit_tag" href="javascript:void(0);" data-action="<%=add_tech_area_organization_path(@organization) %>"><i class="fa fa-plus"></i> ADD</a>
         </div>
         <div class="col-xs-12">
-          <ul class="gover_list">
+          <ul class="gover_list tech_areas_list">
             <%@organization.tech_areas.each do |tech_area|%>
-                <li class="p-10">
-                  <div class="col-xs-12">
-                    <h4 class="font-26 pull-left light-text"><%=tech_area%></h4>
-                    <div class="pull-right icon_edit_pincel mt-10">
-                      <a class="pr-10" href=""><i class="fa fa-pencil"></i></a>
-                      <%=link_to remove_tag_organization_path(id: @organization.id ,tag: tech_area,type: Organization::TechKeyWord),
-                                 :method => 'delete' do%>
-                          <i class="fa fa-times"></i>
-                      <%end%>
-                    </div>
-                  </div>
-                </li>
+                <%= render :partial => 'tech_area' ,:locals=>{:tech_area=>tech_area}%>
             <%end%>
           </ul>
         </div>
         <div class="col-xs-12 mtb-20">
           <h3 class="about_title pull-left">Application Areas of Interest</h3>
-          <a class="pull-right add_option" href=""><i class="fa fa-plus"></i> ADD</a>
+          <a class="pull-right add_option add_edit_tag" href="javascript:void(0);" data-action="<%=add_app_area_organization_path(@organization) %>"><i class="fa fa-plus"></i> ADD</a>
         </div>
         <div class="col-xs-12">
-          <ul class="gover_list">
+          <ul class="gover_list app_areas_list">
             <%@organization.app_areas.each do |app_area|%>
-                <li class="p-10">
-                  <div class="col-xs-12">
-                    <h4 class="font-26 pull-left light-text"><%=app_area%></h4>
-                    <div class="pull-right icon_edit_pincel mt-10">
-                      <a class="pr-10" href=""><i class="fa fa-pencil"></i></a>
-                      <%=link_to remove_tag_organization_path(id: @organization.id ,tag: tech_area,type: Organization::AppKeyWord),
-                                 :method => 'delete' do%>
-                          <i class="fa fa-times"></i>
-                      <%end%>
-                    </div>
-                  </div>
-                </li>
+                <%= render :partial => 'app_area',:locals=>{:app_area=>app_area} %>
             <%end%>
           </ul>
         </div>
         <div class="col-xs-12 mtb-20">
           <h3 class="about_title pull-left">Problems</h3>
-          <a class="pull-right add_option" href=""><i class="fa fa-plus"></i> ADD</a>
+          <a class="pull-right add_option add_edit_tag" href="javascript:void(0);" data-action="<%=add_problem_organization_path(@organization) %>"><i class="fa fa-plus"></i> ADD</a>
         </div>
         <div class="col-xs-12">
-          <ul class="gover_list">
+          <ul class="gover_list problems_list">
             <%@organization.problem_list.each do |problem|%>
-                <li class="p-10">
-                  <div class="col-xs-12">
-                    <h4 class="font-26 pull-left light-text"><%=problem%></h4>
-                    <div class="pull-right icon_edit_pincel mt-10">
-                      <a class="pr-10" href=""><i class="fa fa-pencil"></i></a>
-                      <%=link_to remove_tag_organization_path(id: @organization.id ,tag: problem,type: Organization::ProblemKeyWord),
-                                 :method => 'delete' do%>
-                          <i class="fa fa-times"></i>
-                      <%end%>
-                    </div>
-                  </div>
-                </li>
+                <%= render :partial => 'problem' ,:locals=>{:problem=>problem}%>
             <%end%>
           </ul>
         </div>
       </div>
     </div>
     <div role="tabpanel" class="tab-pane" id="interest">
-      <div class="container">
+      <div class="container notes-container">
         <div class="write_DIV">
-          <h3><button onclick="$('#notes-form-container').slideToggle();">write a new note</button></h3>
-        </div>
-        <div style="display: none" id="notes-form-container" class="notes-form">
-          <%=render :partial =>  "notes/form"%>
+          <h3><a href="javascript:void(0);" onclick="handle_contact_updation(this)" data-href="<%=new_note_path(organization_id: @organization.id) %>">write a new note</a></h3>
         </div>
       </div>
       <%=render :partial => "notes/note", collection: @organization.notes%>
     </div>
   </div>
+
+
+  <div class="modal fade tags-modal" id="modal-id2">
+    <%=form_tag "#",remote: true ,onsubmit:'handle_tags_submission();' do%>
+        <div class="modal-dialog mb-20">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="left-inner-addon mb-20">
+                <%=text_field_tag :tag,'',class: 'form-control tags-autocomplete',id:'tag_input',placeholder:'Type here to search tags'%>
+                <%= hidden_field_tag 'previous_tag','',id:'previous_tag_input'%>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="custom_button">Save</button>
+          <br/>
+          <br/>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        </div>
+    <%end%>
+  </div>
+
+<div id="contact-form-container"></div>
+
+
 </main>
+<script type="text/javascript">
+    autocomplete_data=<%=raw(get_tags_hash_for_autocomplete.to_json)%>
+            set_autocomplete_for('#tag_input');
+    $(document).ready(function(){
+        handle_tag_updation();
+        handle_tags_removal();
+    });
+</script>
+<style type="text/css">
+    .easy-autocomplete{
+        width: 100% !important;
+    }
+    div#eac-container-tags_autocomplete ul li {
+        padding: 10px 20px;
+        border-bottom: 1px solid rgb(221, 221, 221);
+        border-left: none;
+        border-right: none;
+    }
+</style>

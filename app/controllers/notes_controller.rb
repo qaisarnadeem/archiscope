@@ -9,7 +9,7 @@ class NotesController < ApplicationController
 
   # GET /notes/new
   def new
-    @note = Note.new
+    @note = Note.new(:organization_id=>params[:organization_id])
   end
 
   # GET /notes/1/edit
@@ -24,12 +24,8 @@ class NotesController < ApplicationController
     respond_to do |format|
       if @note.save
         format.js
-        format.html { redirect_to @note, notice: 'Note was successfully created.' }
-        format.json { render :show, status: :created, location: @note }
       else
         format.js
-        format.html { render :new }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -39,11 +35,9 @@ class NotesController < ApplicationController
   def update
     respond_to do |format|
       if @note.update(note_params)
-        format.html { redirect_to @note, notice: 'Note was successfully updated.' }
-        format.json { render :show, status: :ok, location: @note }
+        format.js
       else
-        format.html { render :edit }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
+        format.js { render :edit }
       end
     end
   end
@@ -53,8 +47,7 @@ class NotesController < ApplicationController
   def destroy
     @note.destroy
     respond_to do |format|
-      format.html { redirect_to notes_url, notice: 'Note was successfully destroyed.' }
-      format.json { head :no_content }
+      format.js { head :no_content }
     end
   end
 

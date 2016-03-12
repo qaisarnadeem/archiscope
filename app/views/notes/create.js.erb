@@ -1,1 +1,2 @@
-$('.notes-form').slideToggle();
+$('.notes-container').append("<%=escape_javascript(render :partial=>"note",:locals=>{:note=>@note}) %>");
+$('#notes-form').modal('hide');

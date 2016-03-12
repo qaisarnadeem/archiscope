@@ -37,7 +37,6 @@ class OrganizationsController < ApplicationController
       @organization.tech_areas.remove(params[:previous_tag]) if params[:previous_tag].present?
       @organization.save
     end
-    render :json=>{:response=>"SUCCESS"}
   end
 
   def add_app_area
@@ -46,17 +45,15 @@ class OrganizationsController < ApplicationController
       @organization.app_areas.remove(params[:previous_tag]) if params[:previous_tag].present?
       @organization.save
     end
-    render :json=>{:response=>"SUCCESS"}
   end
 
 
   def add_problem
     Organization.transaction do
-      @organization.app_areas.add(params[:tag]) if params[:tag].present?
-      @organization.app_areas.remove(params[:previous_tag]) if params[:previous_tag].present?
+      @organization.problem_list.add(params[:tag]) if params[:tag].present?
+      @organization.problem_list.remove(params[:previous_tag]) if params[:previous_tag].present?
       @organization.save
     end
-    render :json=>{:response=>"SUCCESS"}
   end
 
   def add_note
@@ -71,7 +68,6 @@ class OrganizationsController < ApplicationController
   # POST /organizations.json
   def create
     @organization = Organization.new(organization_params)
-
     respond_to do |format|
       if @organization.save
         format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
@@ -88,11 +84,8 @@ class OrganizationsController < ApplicationController
   def update
     respond_to do |format|
       if @organization.update(organization_params)
-        format.html { redirect_to @organization, notice: 'Organization was successfully updated.' }
-        format.json { render :show, status: :ok, location: @organization }
       else
-        format.html { render :edit }
-        format.json { render json: @organization.errors, status: :unprocessable_entity }
+        format.js { render :edit }
       end
     end
   end
