@@ -73,6 +73,9 @@ function handle_tag_updation() {
         if (previous_tag) {
             $('.tags-modal #tag_input').val(previous_tag);
             $('.tags-modal #previous_tag_input').val(previous_tag);
+        }else{
+            $('.tags-modal #tag_input').val('');
+            $('.tags-modal #previous_tag_input').val('');
         }
         $('.tags-modal form').attr('action', $(this).data().action);
         $('.tags-modal #index_input').val($(this).index);
@@ -96,7 +99,9 @@ function handle_note_removal(elem){
         url: $(elem).data().href + '/',
         type: 'DELETE',
         success: function(result) {
-            $(elem).parents(".full_width.ptb-20").fadeOut();
+            $(elem).parents(".full_width.ptb-20").fadeOut('normal',function(){
+                $(this).remove();
+            });
         }
     });
 }

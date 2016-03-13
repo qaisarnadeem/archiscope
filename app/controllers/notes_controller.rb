@@ -25,7 +25,7 @@ class NotesController < ApplicationController
       if @note.save
         format.js
       else
-        format.js
+        format.js {render :new}
       end
     end
   end

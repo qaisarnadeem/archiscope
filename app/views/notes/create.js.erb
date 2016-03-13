@@ -1,2 +1,2 @@
-$('.notes-container').append("<%=escape_javascript(render :partial=>"note",:locals=>{:note=>@note}) %>");
+$('.notes-container').prepend("<%=escape_javascript(render :partial=>"note",:locals=>{:note=>@note}) %>");
 $('#notes-form').modal('hide');$('.modal-backdrop.fade.in').remove();
