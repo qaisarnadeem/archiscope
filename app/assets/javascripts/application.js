@@ -83,16 +83,16 @@ function handle_tag_updation() {
     });
 }
 function handle_contact_updation(elem){
-        jQuery.get($(elem).data().href);
+    jQuery.get($(elem).data().href);
 }
 function handle_contacts_removal(elem){
-        $.ajax({
-            url: $(elem).data().href + '/',
-            type: 'DELETE',
-            success: function(result) {
-                $(elem).parents("li.contact").fadeOut();
-            }
-        });
+    $.ajax({
+        url: $(elem).data().href + '/',
+        type: 'DELETE',
+        success: function(result) {
+            $(elem).parents("li.contact").fadeOut();
+        }
+    });
 }
 function handle_note_removal(elem){
     $.ajax({
@@ -108,3 +108,18 @@ function handle_note_removal(elem){
 $('body').bind('hidden.bs.modal', function(e){
     $('.modal-backdrop.fade.in').remove();
 });
+function tab_open(){
+    $('li a[role="tab"]').on("shown.bs.tab", function(e) {
+        var id = $(e.target).attr("href").substr(1);
+        window.location.hash = id;
+    });
+
+// on load of the page: switch to the currently selected tab
+    var hash = window.location.hash;
+    console.log(hash);
+    if(hash) {
+        $('li a[role="tab"][href="' + hash + '"]').tab('show');
+    }
+}
+$(document).ready(tab_open);
+$(document).on('page:load', tab_open);

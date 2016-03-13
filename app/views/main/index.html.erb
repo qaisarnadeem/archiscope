@@ -9,10 +9,10 @@
 <%content_for :top_header do%>
     <div role="tabpanel">
       <ul class="app_menu m-0 mt-50" role="tablist">
-        <li role="presentation" class="<%="active" if params[:tab_type].blank?%> col-xs-6 text-center">
+        <li role="presentation" class="active <%"active" if params[:tab_type].blank?%> col-xs-6 text-center">
           <a href="#tab" aria-controls="tab" role="tab" data-toggle="tab">Organizations</a>
         </li>
-        <li role="presentation" class="<%="active" if params[:tab_type].present?%> col-xs-6 text-center">
+        <li role="presentation" class="<%"active" if params[:tab_type].present?%> col-xs-6 text-center">
           <a href="#interest" aria-controls="interest" role="tab" data-toggle="tab">Areas of interest</a>
         </li>
       </ul>
@@ -51,4 +51,8 @@
     $('#type-chosen').change(function(){
         set_autocomplete_for('#query-search',$(this).val());
     });
+    <%if params[:tab_type]%>
+    $('#tab-chooser').val("#<%=params[:tab_type]%>");
+    $('#tab-chooser').trigger('change');
+    <%end%>
 </script>

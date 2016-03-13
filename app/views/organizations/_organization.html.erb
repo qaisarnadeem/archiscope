@@ -1,5 +1,5 @@
-<%=link_to organization_path(organization) do %>
 <div class="col-xs-12 p-0">
+  <%=link_to organization_path(organization) do %>
   <div class="col-xs-12 box_asian mt-30">
     <div class="icon_div">
       <%=image_tag organization.logo.url(:thumb)%>
@@ -20,5 +20,5 @@
       <li class="col-xs-3 text-center"><i class="vlc"></i> <span><%=organization.problems.length%> Problems</span></li>
     </ul>
   </div>
+  <%end%>
 </div>
-<%end%>
