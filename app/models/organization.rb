@@ -28,6 +28,10 @@ class Organization < ActiveRecord::Base
     OrganizationTypesColors[self.organization_type_id]
   end
 
+  def type_name
+    OrganizationTypesFriendlyNames[self.organization_type_id].to_s.parameterize
+  end
+
 
   def app_areas
     self.application_area_list

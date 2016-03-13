@@ -7,7 +7,7 @@
         <%end%>
       </div>
       <h4 class="white-text font-28"><%=@organization.name%></h4>
-      <p class="white-text"><span class="number_class"><%=Organization::OrganizationTypesFriendlyNames[@organization.organization_type_id]%></span></p>
+      <p class="white-text"><span class="number_class <%=@organization.type_name%>"><%=Organization::OrganizationTypesFriendlyNames[@organization.organization_type_id]%></span></p>
       <p class="white-text font-16"><%=@organization.address%></p>
     </div>
     <div class="col-xs-2 p-0">

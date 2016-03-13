@@ -4,7 +4,7 @@
       <tbody>
       <%grouped_result.group_by(&:tag_name).each do |tag_name,tagging|%>
           <tr data-href="<%=root_path(q: tag_name,type:filter_type)%>">
-            <td class="bt-0 br-1" width="50 " align="center"><%=tagging.length%></td>
+            <td class="bt-0 br-1" width="50 " align="center"><%=tagging.sum {|hash| hash['count_all']}%></td>
             <td class="bt-0"><%=tag_name%>
               <div class="pull-right">
                 <%count_hash=tagging.group_by(&:organization_type_id)%>
