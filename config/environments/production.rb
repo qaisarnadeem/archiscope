@@ -78,4 +78,15 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   config.serve_static_assets = true
   config.assets.compile = true
+  config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_credentials => {
+          :bucket => 'archiscope-production',
+          :access_key_id => ENV['AWS_ACCESS_KEY'],
+          :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+      }
+  }
+  Paperclip::Attachment.default_options[:url] = ':s3_domain_url'
+  Paperclip::Attachment.default_options[:path] = '/:class/:attachment/:id/:style/:filename'
+  Paperclip::Attachment.default_options[:use_timestamp] = false
 end
