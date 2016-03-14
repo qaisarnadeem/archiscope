@@ -34,8 +34,9 @@
         <td><%= organization.logo_updated_at %></td>
         <td><%=l organization.created_at %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_organization_path(organization), :class => 'btn btn-default btn-xs' %>
+          <%= link_to  'New','javascript:void(0)',
+                       'data-href'=>edit_organization_path(organization),:onclick=>"handle_contact_updation(this)",
+                       :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       organization_path(organization),
                       :method => :delete,
@@ -47,6 +48,6 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_organization_path,
+<%= link_to  'New','javascript:void(0)',
+            'data-href'=>new_organization_path,:onclick=>"handle_contact_updation(this)",
             :class => 'btn btn-primary' %>

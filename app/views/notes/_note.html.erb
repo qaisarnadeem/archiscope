@@ -1,5 +1,4 @@
-<%note_counter ||= 1%>
-<div class="full_width ptb-20 <%='white-bg' if note_counter.odd?%>" id="note_<%=note.id%>">
+<div class="full_width ptb-20" id="note_<%=note.id%>">
   <div class="container">
     <div class="col-xs-12 p-0">
       <%=image_tag note.user.avatar.url(:thumb),class:"pull-left pr-10"%>

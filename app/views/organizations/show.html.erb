@@ -1,20 +1,6 @@
 
 <%content_for :top_header do%>
-    <div class="col-xs-8 p-0 text-center">
-      <div class="gover_icon">
-        <%=link_to @organization.get_complete_url ,target: '_blank' do%>
-            <%=image_tag(@organization.logo.url(:thumb))%>
-        <%end%>
-      </div>
-      <h4 class="white-text font-28"><%=@organization.name%></h4>
-      <p class="white-text"><span class="number_class"><%=Organization::OrganizationTypesFriendlyNames[@organization.organization_type_id]%></span></p>
-      <p class="white-text font-16"><%=@organization.address%></p>
-    </div>
-    <div class="col-xs-2 p-0">
-      <div class="icon_bars pull-right">
-        <span class="top-link" data-href="<%=edit_organization_path(@organization)%>" onclick="handle_contact_updation(this)"><i class="fa fa-pencil"></i></span>
-      </div>
-    </div>
+    <%= render :partial => 'top_header' %>
 <%end%>
 <%content_for :top_header_container do%>
     <div role="tabpanel">
@@ -40,7 +26,7 @@
         <div class="container">
           <div class="col-xs-12 p-0 mtb-30">
             <h2 class="about_title">About Organization</h2>
-            <p class="font-18 light-text"><%=@organization.about%></p>
+            <p class="font-18 light-text about-organization"><%=@organization.about%></p>
           </div>
         </div>
       </div>
@@ -84,12 +70,14 @@
       </div>
     </div>
     <div role="tabpanel" class="tab-pane" id="interest">
-      <div class="container notes-container">
+      <div class="container">
         <div class="write_DIV">
           <h3><a href="javascript:void(0);" onclick="handle_contact_updation(this)" data-href="<%=new_note_path(organization_id: @organization.id) %>">write a new note</a></h3>
         </div>
       </div>
+      <div class="notes-container">
       <%=render :partial => "notes/note", collection: @organization.notes%>
+      </div>
     </div>
   </div>
 

@@ -78,10 +78,10 @@
                 Logout</a></h4>
               <div class="menu_container">
                 <ul class="menu_list">
-                  <li class="active"><a href="">Organizations <span class="number_class"><%=Organization.count%></span></a></li>
-                  <li><a href="">Tech Areas of Interest <span><%=tags_count[Organization::TechKeyWord]%></span></a></li>
-                  <li><a href="">Application Areas of Interest <span><%=tags_count[Organization::AppKeyWord]%></span></a></li>
-                  <li><a href="">Problems <span><%=tags_count[Organization::ProblemKeyWord]%></span></a></li>
+                  <li class="active"><a href="<%=root_path%>">Organizations <span class="number_class"><%=Organization.count%></span></a></li>
+                  <li><a href="?tab_type=tech_areas_tab#interest">Tech Areas of Interest <span><%=tags_count[Organization::TechKeyWord]%></span></a></li>
+                  <li><a href="?tab_type=app_areas_tab#interest">Application Areas of Interest <span><%=tags_count[Organization::AppKeyWord]%></span></a></li>
+                  <li><a href="?tab_type=problems_tab#interest">Problems <span><%=tags_count[Organization::ProblemKeyWord]%></span></a></li>
                 </ul>
               </div>
           <%end%>
@@ -94,7 +94,9 @@
               <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas"> <span class="hamb-top"></span> <span class="hamb-middle"></span> <span class="hamb-bottom"></span> </button>
             </div>
           </div>
-          <%= yield :top_header%>
+          <div class="top-header-container">
+            <%= yield :top_header%>
+          </div>
         </div>
         <%= yield :top_header_container%>
       </div>

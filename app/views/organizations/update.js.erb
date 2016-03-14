@@ -1,1 +1,3 @@
+$('.top-header-container').html("<%=escape_javascript(render :partial=> 'top_header').html_safe%>");
+$('.about-organization').text("<%=@organization.about%>");
 $('#organizations-form').modal('hide');$('.modal-backdrop.fade.in').remove();

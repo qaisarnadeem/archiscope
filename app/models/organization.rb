@@ -1,10 +1,11 @@
 class Organization < ActiveRecord::Base
+  include FriendlyId
   belongs_to :user
   has_many :notes ,->{order(:updated_at=>:desc)},dependent: :destroy
   has_many :contacts
   acts_as_taggable_on :technology_areas,:application_areas,:problems
   attr_accessor :logo
-
+  friendly_id :name , use: :slugged
   validates_presence_of :name,:organization_type_id
   validates_uniqueness_of :name, :case_sensitive => false
   has_attached_file :logo, styles: { medium: "300x300>", thumb: "112x112>" }, default_url: "/assets/:style/missing.png"
@@ -28,9 +29,17 @@ class Organization < ActiveRecord::Base
     OrganizationTypesColors[self.organization_type_id]
   end
 
+  def type_name
+    OrganizationTypesFriendlyNames[self.organization_type_id].to_s.parameterize
+  end
+
 
   def app_areas
     self.application_area_list
+  end
+
+  def should_generate_new_friendly_id?
+    new_record? || slug.blank?
   end
 
   def last_updated_at
