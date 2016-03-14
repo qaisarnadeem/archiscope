@@ -303,6 +303,11 @@ h4.dark_blue {
     width: 100%;
     padding-top: 20px;
 }
+.login_bg {
+  background: image-url('header.jpg');
+  float: left;
+  width: 100%;
+}
 
 #header i {
     color: #fff;
@@ -375,7 +380,7 @@ h4.dark_blue {
 
 .icon_bars {
     position: relative;
-    top: 83px;
+    top: 37px;
     font-size: 16px;
     cursor: pointer;
 }
@@ -654,8 +659,8 @@ h4.dark_blue {
 
 .yello_bg {
     background-color: #f0c514;
-    padding: 0px 10px;
-    margin: 0px 5px;
+    padding: 3px 10px;
+    margin: 2px 5px;
     float: left;
     border-radius: 5px;
     color: #fff;
@@ -663,8 +668,8 @@ h4.dark_blue {
 
 .green_bg {
     background-color: #8dc63f;
-    padding: 0px 10px;
-    margin: 0px 5px;
+    padding: 3px 10px;
+    margin: 2px 5px;
     float: left;
     border-radius: 5px;
     color: #fff;
@@ -672,14 +677,12 @@ h4.dark_blue {
 
 .meroon_bg {
     background-color: #ba2586;
-    padding: 0px 10px;
-    margin: 0px 5px;
+    padding: 3px 10px;
+    margin: 2px 5px;
     float: left;
     border-radius: 5px;
     color: #fff;
 }
-
-
 /*=============================*/
 
 .left-inner-addon {
@@ -733,8 +736,64 @@ h4.dark_blue {
 }
 
 
-/*==========================================================*/
 
+/*========================================*/
+
+.navbar-inverse .navbar-nav>.active>a,
+.navbar-inverse .navbar-nav>.active>a:focus,
+.navbar-inverse .navbar-nav>.active>a:hover {
+  color: #fff;
+  background-color: rgba(120, 60, 162, 0.57);
+}
+
+.navbar-inverse .navbar-nav>li>a {
+  color: #fff !important;
+}
+
+.custom_button_login {
+  background-color: #562F72;
+  height: 40px;
+  width: 100%;
+  border-radius: 15px;
+  border: 1px solid #fff;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.login_field {
+  background-color: #562F72 !important;
+  color: #fff;
+  border-radius: 0px;
+  border: none;
+  border-bottom: 1px solid #fff;
+}
+
+input:-webkit-autofill {
+  background-color: #000 !important;
+}
+
+.mt-50 {
+  margin-top: 50px;
+}
+
+.mt-70 {
+  margin-top: 70px;
+}
+
+.forgot_style {
+  float: right;
+  color: #fff;
+}
+
+.forgot_style:hover {
+  color: #fff;
+}
+
+#main {
+  float: left;
+  width: 100%;
+  background-color: #f0f1f3;
+}
 
 /*=======================
     Responsive Css
@@ -821,6 +880,12 @@ h4.dark_blue {
         z-index: 99999999999999999;
         top: -22px;
         height: 700px;
+        -webkit-transition: width 3s;
+        /* Safari */
+        -webkit-transition-delay: 1s;
+        /* Safari */
+        transition: width 3s;
+        transition-delay: 1s;
     }
     .nav>li>a {
         padding: 10px 10px 15px 42px;
@@ -831,9 +896,15 @@ h4.dark_blue {
     .page_left {
         position: relative;
         left: 267px;
+        -webkit-transition: width 3s;
+        /* Safari */
+        -webkit-transition-delay: 1s;
+        /* Safari */
+        transition: width 3s;
+        transition-delay: 1s;
     }
     .bg_mobile {
-        background: url(../images/header.jpg);
+        background: url('header.jpg');
         float: left;
         padding-top: 20px;
     }
@@ -852,6 +923,7 @@ h4.dark_blue {
     h4.font-26.pull-left.light-text {
         width: 233px;
     }
+
 }
 
 @media screen and (min-width: 640px) and (max-width: 768px) {}
@@ -903,3 +975,9 @@ h4.dark_blue {
 @media (max-width:1024px) {}
 
 @media (max-width:767px) {}
+.navbar .close {
+  display: none;
+}
+.page_left .close {
+  display: block;
+}
