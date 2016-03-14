@@ -30,19 +30,17 @@
     }
 
     function nav_bar() {
-        $('#nav_bar').show();
-        $('#nav_bar').addClass('left_0');
-        $('#page-content-wrapper').addClass('page_left');
-        $('#nav_bar').removeClass('left_219');
+        $('.left_219').animate({ "left": '-268px' });
+        $('#page-content-wrapper').animate({ "left": '267px' });
         $(".overlay").css("display", "block");
+        $(".close").css("display", "block");
 
 
     }
 
     function close_div() {
-        $('#nav_bar').hide();
-        $('#page-content-wrapper').removeClass('page_left');
-        $('#nav_bar').removeClass('left_0');
-        $('#nav_bar').addClass('left_219');
+        $('.left_219').animate({ "left": '-267px' });
+        $('#page-content-wrapper').animate({ "left": '0px' });
         $(".overlay").css("display", "none");
+        $(".close").css("display", "none");
     }

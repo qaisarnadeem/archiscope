@@ -864,6 +864,9 @@ input:-webkit-autofill {
         background-color: rgba(0, 0, 0, 0.7);
         z-index: 1;
     }
+    #page-content-wrapper {
+        position: relative;
+    }
     .navbar-toggle .icon-bar {
         background-color: #fff;
     }
@@ -876,22 +879,10 @@ input:-webkit-autofill {
         float: left;
         width: 280px;
         position: absolute;
-        left: -267px;
-    }
-    .left_0 {
-        float: left;
-        width: 280px;
-        position: absolute;
-        left: -267px;
-        display: block !important;
+        left: -289px;
         z-index: 1;
-        top: -22px;
-        height: 700px;
-        -webkit-transition: 3s;
-        -moz-transition: 3s;
-        -ms-transition: 3s;
-        -o-transition: 3s;
-        transition: 3s;
+        top: -21px;
+        height: 812px;
     }
     .nav>li>a {
         padding: 10px 10px 15px 42px;
@@ -913,13 +904,12 @@ input:-webkit-autofill {
         float: left;
         padding-top: 20px;
     }
-    .left_0 .close {
+    .close {
         position: absolute;
         right: -53px;
         float: right;
         height: 30px;
         width: 32px;
-        display: block;
         top: 0px;
     }
     .close i {
