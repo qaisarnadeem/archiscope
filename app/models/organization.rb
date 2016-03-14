@@ -10,6 +10,7 @@ class Organization < ActiveRecord::Base
   validates_uniqueness_of :name, :case_sensitive => false
   has_attached_file :logo, styles: { medium: "300x300>", thumb: "112x112>" }, default_url: "/assets/:style/missing.png"
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
+  validates_attachment_size :logo, :in => 0.megabytes..1.megabytes
   Company=1
   GovernmentAgency=2
   InvestmentGroup=3
