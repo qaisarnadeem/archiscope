@@ -1,6 +1,7 @@
 <div class="modal fade" id="organizations-form">
   <%= form_for @organization, :html => { :class => "form-horizontal organization" ,multipart: true,remote:true} do |f| %>
       <div class="modal-dialog mb-20">
+        <h4 class="popup-title"><%=@organization.new_record? ? "Add New" : "Edit"%> Organization</h4>
         <div class="modal-content">
           <div class="modal-body">
             <div class="mb-20">

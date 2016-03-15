@@ -1,6 +1,7 @@
 <div class="modal fade" id="contacts-form">
   <%= form_for @contact, :html => { :class => "form-horizontal contact" ,remote:true} do |f| %>
       <div class="modal-dialog mb-20">
+        <h4 class="popup-title"><%=@contact.new_record? ? "Add New" : "Edit"%> Contact</h4>
         <div class="modal-content">
           <div class="modal-body">
             <div class="mb-20">

@@ -2,7 +2,7 @@
   <div class="col-xs-12">
     <h4 class="font-26 pull-left light-text"><%=problem%></h4>
     <div class="pull-right icon_edit_pincel mt-10">
-      <%=link_to 'javascript:void(0)','data-action'=>add_problem_organization_path(@organization),'data-previous-tag'=>problem ,class:'pr-10 add_edit_tag' do %>
+      <%=link_to 'javascript:void(0)','data-action'=>add_problem_organization_path(@organization),'data-previous-tag'=>problem ,class:'pr-10 add_edit_tag' ,'data-type'=>"3" do %>
           <i class="fa fa-pencil"></i>
       <%end%>
 

@@ -2,6 +2,7 @@
 <div class="modal fade" id="notes-form">
   <%= form_for note, :html => { :class => "form-horizontal contact" ,remote:true} do |f| %>
       <div class="modal-dialog mb-20">
+        <h4 class="popup-title"><%=@note.new_record? ? "Add New" : "Edit"%> Note</h4>
         <div class="modal-content">
           <div class="modal-body">
             <div class="left-inner-addon mb-20">

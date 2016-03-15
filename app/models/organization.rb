@@ -15,7 +15,7 @@ class Organization < ActiveRecord::Base
   GovernmentAgency=2
   InvestmentGroup=3
   OrganizationTypesFriendlyNames={Company=>'Company',GovernmentAgency=>'Government Agency',InvestmentGroup=>'Investment Group'}
-  OrganizationTypesColors={Company=>'purpal_bg',GovernmentAgency=>'info_bg',InvestmentGroup=>'green_bg'}
+  OrganizationTypesColors={Company=>'purpal_bg',GovernmentAgency=>'info_bg',InvestmentGroup=>'investment-group invst-grp'}
   ProblemKeyWord='problems'
   AppKeyWord='application_areas'
   TechKeyWord='technology_areas'

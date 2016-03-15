@@ -36,7 +36,7 @@
       <div class="container">
         <div class="col-xs-12 mtb-20">
           <h3 class="about_title pull-left">Technology Areas of Interest</h3>
-          <a class="pull-right add_option add_edit_tag" href="javascript:void(0);" data-action="<%=add_tech_area_organization_path(@organization) %>"><i class="fa fa-plus"></i> ADD</a>
+          <a class="pull-right add_option add_edit_tag" data-type="1" href="javascript:void(0);" data-action="<%=add_tech_area_organization_path(@organization) %>"><i class="fa fa-plus"></i> ADD</a>
         </div>
         <div class="col-xs-12">
           <ul class="gover_list tech_areas_list">
@@ -47,7 +47,7 @@
         </div>
         <div class="col-xs-12 mtb-20">
           <h3 class="about_title pull-left">Application Areas of Interest</h3>
-          <a class="pull-right add_option add_edit_tag" href="javascript:void(0);" data-action="<%=add_app_area_organization_path(@organization) %>"><i class="fa fa-plus"></i> ADD</a>
+          <a class="pull-right add_option add_edit_tag" data-type="2" href="javascript:void(0);" data-action="<%=add_app_area_organization_path(@organization) %>"><i class="fa fa-plus"></i> ADD</a>
         </div>
         <div class="col-xs-12">
           <ul class="gover_list app_areas_list">
@@ -58,7 +58,7 @@
         </div>
         <div class="col-xs-12 mtb-20">
           <h3 class="about_title pull-left">Problems</h3>
-          <a class="pull-right add_option add_edit_tag" href="javascript:void(0);" data-action="<%=add_problem_organization_path(@organization) %>"><i class="fa fa-plus"></i> ADD</a>
+          <a class="pull-right add_option add_edit_tag" data-type="3" href="javascript:void(0);" data-action="<%=add_problem_organization_path(@organization) %>"><i class="fa fa-plus"></i> ADD</a>
         </div>
         <div class="col-xs-12">
           <ul class="gover_list problems_list">
@@ -85,6 +85,7 @@
   <div class="modal fade tags-modal" id="modal-id2">
     <%=form_tag "#",remote: true ,onsubmit:'handle_tags_submission();' do%>
         <div class="modal-dialog mb-20">
+          <h4 class="popup-title"></h4>
           <div class="modal-content">
             <div class="modal-body">
               <div class="left-inner-addon mb-20">

@@ -55,3 +55,62 @@ span.top-link{
 div.full_width:nth-of-type(even) {
   background: #fff;
 }
+
+.investment-group{
+  background-color: #8dc63f !important;
+}
+.invst-grp{
+  border-radius: 0px 0px 5px 5px;
+  color: #fff;
+}
+.government-agency{
+  background-color: #f0c514 !important;
+}
+.form-control {
+  box-shadow: none;
+  font-size: 18px;
+  font-weight: bold;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+.form-control:focus {
+  border-color: transparent;
+  box-shadow: none;
+}
+.meroon_bg, .yello_bg, .green_bg {
+  padding: 0px 10px;
+  margin: 0px 5px;
+}
+.easy-autocomplete input {
+  box-shadow: none;
+}
+.form-control {
+  background-color: transparent;
+}
+.nav li:hover{
+  background-color:rgba(255, 255, 255, 0.06);
+}
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+  background-color: transparent;
+}
+.nav>li>a {
+  padding: 10px 10px;
+}
+
+.drpdwn-area{
+  overflow: hidden;
+  background: image-url('drop-icon.png') no-repeat right;
+  right: 15px;
+}
+.number_class {
+  border-radius: 3px;
+}
+#header {
+  padding-top: 0px;
+}
+.popup-title{
+  text-align: center;
+  color: #FFF;
+  margin-top: 10%;
+  text-transform: capitalize;
+}

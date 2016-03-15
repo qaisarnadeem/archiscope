@@ -67,18 +67,24 @@ function handle_tags_removal(){
     })
 }
 function handle_tag_updation() {
+    var mappings={"1":"Technology Areas of Interest","2":"Application Areas of Interest","3":"Problem"}
     $('.add_edit_tag').click(function () {
         previous_tag = $(this).data().previousTag;
         clicked_element=this;
+        var popup_title="";
         if (previous_tag) {
             $('.tags-modal #tag_input').val(previous_tag);
             $('.tags-modal #previous_tag_input').val(previous_tag);
+            popup_title="Edit "
         }else{
             $('.tags-modal #tag_input').val('');
             $('.tags-modal #previous_tag_input').val('');
+            popup_title="Add New "
         }
+        popup_title += mappings[$(this).data().type];
         $('.tags-modal form').attr('action', $(this).data().action);
         $('.tags-modal #index_input').val($(this).index);
+        $('.tags-modal .popup-title').text(popup_title);
         $('.tags-modal').modal('show');
     });
 }
