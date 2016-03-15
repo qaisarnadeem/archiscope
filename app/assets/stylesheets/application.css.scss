@@ -73,7 +73,7 @@ div.full_width:nth-of-type(even) {
   -webkit-appearance: none;
   cursor: pointer;
 }
-.form-control:focus {
+#query-search.form-control:focus {
   border-color: transparent;
   box-shadow: none;
 }
@@ -113,4 +113,8 @@ div.full_width:nth-of-type(even) {
   color: #FFF;
   margin-top: 10%;
   text-transform: capitalize;
+}
+img.grayscale{
+  filter: gray; /* IE6-9 */
+  -webkit-filter: grayscale(100%);
 }

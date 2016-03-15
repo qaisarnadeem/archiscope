@@ -861,7 +861,7 @@ input:-webkit-autofill {
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba(0, 0, 0, 0.7);
+        background-color: rgba(0, 0, 0, 0.98);
         z-index: 1;
     }
     #page-content-wrapper {
@@ -904,13 +904,16 @@ input:-webkit-autofill {
         float: left;
         padding-top: 20px;
     }
-    .close {
-        position: absolute;
-        right: -53px;
-        float: right;
-        height: 30px;
-        width: 32px;
-        top: 0px;
+    #nav_bar .close {
+      position: absolute;
+      right: -50px;
+      float: right;
+      height: 30px;
+      width: 32px;
+      top: 10px;
+      i{
+        font-size: 20px;
+      }
     }
     .close i {
         font-size: 12px;
@@ -939,6 +942,7 @@ input:-webkit-autofill {
     .icon_div {
         float: initial;
         margin: 0 auto;
+        border: none;
     }
     .logo img {
         max-width: 100%;
@@ -976,4 +980,7 @@ input:-webkit-autofill {
 
 .page_left .close {
     display: block;
+}
+div#nav_bar ul{
+  padding-left: 20px;
 }
