@@ -129,7 +129,10 @@ function tab_open(){
 }
 $(document).ready(tab_open);
 $(document).on('page:load', tab_open);
-$(document).ready(function(e){
-    $('.background-overlay').bind('touchstart',close_div);
-    e.stopPropagation();
+$(document).ready(function(){
+    $('.background-overlay').bind('touchstart',function(e) {
+        close_div();
+        e.stopPropagation();
+        e.preventDefault();
+    });
 });
