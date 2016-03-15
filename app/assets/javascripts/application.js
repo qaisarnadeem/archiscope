@@ -129,3 +129,6 @@ function tab_open(){
 }
 $(document).ready(tab_open);
 $(document).on('page:load', tab_open);
+$(document).ready(function(){
+    $('.background-overlay').bind('touchstart',close_div);
+});

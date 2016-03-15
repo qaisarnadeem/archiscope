@@ -34,6 +34,7 @@
         $('#page-content-wrapper').animate({ "left": '267px' });
         $(".overlay").css("display", "block");
         $(".close").css("display", "block");
+        $('body').addClass("menu-shown");
 
 
     }
@@ -43,4 +44,5 @@
         $('#page-content-wrapper').animate({ "left": '0px' });
         $(".overlay").css("display", "none");
         $(".close").css("display", "none");
+        $('body').removeClass("menu-shown");
     }

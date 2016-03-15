@@ -118,3 +118,10 @@ img.grayscale{
   filter: gray; /* IE6-9 */
   -webkit-filter: grayscale(100%);
 }
+body.menu-shown{
+  overflow-x: hidden;
+  main#main{
+    overflow-y: hidden;
+    height: 0;
+  }
+}

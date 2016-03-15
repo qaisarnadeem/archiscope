@@ -627,8 +627,9 @@ h4.dark_blue {
 }
 
 .navbar-inverse {
-    background-color: #562F72 !important;
+    background-color: transparent;
     border-color: #562F72 !important;
+    border: transparent;
     padding: 10px 15px 0px 15px;
 }
 
@@ -793,7 +794,7 @@ input:-webkit-autofill {
 
 #main {
     float: left;
-    width: 97%;
+    width: 100%;
     background-color: #f0f1f3;
 }
 
