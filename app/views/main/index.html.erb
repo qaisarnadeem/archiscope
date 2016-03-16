@@ -32,6 +32,7 @@
                 <%=text_field_tag 'q' , params[:q],autocomplete: :off,:placeholder=>'Search....',:class=>'form-control custom_field',:id=>'query-search'%>
               </div>
               <div class="col-xs-5 ">
+                <i class="fa fa-filter filter-icon"></i>
                 <%=select_tag "type",options_for_search_types(params[:type]) ,class: "form-control",id: 'type-chosen'%>
               </div>
           <%end%>

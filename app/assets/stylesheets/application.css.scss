@@ -116,7 +116,7 @@ div.full_width:nth-of-type(even) {
   text-transform: capitalize;
 }
 img.note-avatar{
- border-radius: 15px;
+ border-radius: 10px;
 }
 body.menu-shown{
   overflow-x: hidden;
@@ -133,4 +133,11 @@ body.menu-shown{
 }
 .mr10{
   margin-right: 10px;
+}
+.filter-icon{
+  right: 15px;
+  position: absolute;
+  top: 5px;
+  color: #555555;
+  font-size: 20px;
 }
