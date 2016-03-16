@@ -39,9 +39,15 @@
 
     }
 
-    function close_div() {
-        $('.left_219').animate({ "left": '-267px' });
-        $('#page-content-wrapper').animate({ "left": '0px' });
+    function close_div(duration) {
+        if(duration==undefined)
+        {
+            $('.left_219').animate({ "left": '-267px' });
+            $('#page-content-wrapper').animate({ "left": '0px' });
+        }else {
+            $('.left_219').animate({ "left": '-267px' },duration);
+            $('#page-content-wrapper').animate({ "left": '0px' },duration);
+        }
         $(".overlay").css("display", "none");
         $(".close").css("display", "none");
         $('body').removeClass("menu-shown");

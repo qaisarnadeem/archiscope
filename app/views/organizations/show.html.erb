@@ -10,10 +10,10 @@
           <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Profile</a>
         </li>
         <li role="presentation" class=" col-xs-4 text-center">
-          <a href="#tab" aria-controls="tab" role="tab" data-toggle="tab"><%=@organization.total_tags_count%> Areas of Interest</a>
+          <a href="#tab" aria-controls="tab" role="tab" data-toggle="tab"><%=@organization.total_tags_count%> <%="Areas".pluralize(@organization.total_tags_count)%> of Interest</a>
         </li>
         <li role="presentation" class="col-xs-4 text-center">
-          <a href="#interest" aria-controls="interest" role="tab" data-toggle="tab"><%=@organization.notes.length%> Notes</a>
+          <a href="#interest" aria-controls="interest" role="tab" data-toggle="tab"><%=@organization.notes.length%> <%="Note".pluralize(@organization.notes.length)%></a>
         </li>
       </ul>
       <!-- Tab panes -->

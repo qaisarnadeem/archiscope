@@ -48,6 +48,7 @@ background-color: #8DC63F;
 }
 #query-search,#type-chosen{
   border: none;
+  box-shadow: none;
 }
 span.top-link{
   cursor: pointer;
@@ -114,9 +115,8 @@ div.full_width:nth-of-type(even) {
   margin-top: 10%;
   text-transform: capitalize;
 }
-img.grayscale{
-  filter: gray; /* IE6-9 */
-  -webkit-filter: grayscale(100%);
+img.note-avatar{
+ border-radius: 15px;
 }
 body.menu-shown{
   overflow-x: hidden;
@@ -124,4 +124,10 @@ body.menu-shown{
     overflow-y: hidden;
     height: 0;
   }
+}
+.fa-dot-circle-o.red{
+  color:red;
+}
+.modal-backdrop.in{
+  opacity: 0.85;
 }

@@ -126,6 +126,9 @@ function tab_open(){
     if(hash) {
         $('li a[role="tab"][href="' + hash + '"]').tab('show');
     }
+    $('ul.navbar-nav li a').click(function(){
+        close_div(10);
+    });
 }
 $(document).ready(tab_open);
 $(document).on('page:load', tab_open);
