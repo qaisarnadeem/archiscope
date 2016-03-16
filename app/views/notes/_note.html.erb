@@ -1,7 +1,7 @@
 <div class="full_width ptb-20" id="note_<%=note.id%>">
   <div class="container">
     <div class="col-xs-12 p-0">
-      <%=image_tag note.user.avatar.url(:thumb),class:"pull-left pr-10 note-avatar"%>
+      <%=image_tag note.user.avatar.url(:thumb),class:"pull-left mr10 note-avatar"%>
       <div class="pull-left">
         <h4 class="name-title"><%=note.user.full_name%></h4>
         <p class="light-text font-16"><%=time_ago_in_words note.updated_at%> ago</p>
