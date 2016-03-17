@@ -428,7 +428,6 @@ h4.dark_blue {
 
 .custom_icon li span {
     position: relative;
-    bottom: 5px;
 }
 
 .custom_field {
@@ -803,6 +802,33 @@ input:-webkit-autofill {
 }
 
 
+/*================================ new Changes==========================*/
+
+.icon_bars {
+    top: 16px !important;
+}
+
+.icon_div img {
+    width: 100%;
+}
+
+.light_bg {
+    background-color: rgba(210, 149, 253, 0.39);
+}
+
+.nav>li.active a {
+    background-color: rgba(210, 149, 253, 0.39);
+}
+
+.easy-autocomplete-container {
+    position: relative !important;
+}
+
+.custom_icon li.col-xs-3 {
+    padding: 0px;
+}
+
+
 /*=======================
     Responsive Css
 =========================*/
@@ -840,8 +866,8 @@ input:-webkit-autofill {
         border: 2px solid #ddd;
         padding: 10px;
         text-align: center;
-        width: 120px;
-        height: 120px;
+        width: 97px;
+        height: 94px;
     }
     .custom_width {
         width: 64%;
@@ -906,21 +932,29 @@ input:-webkit-autofill {
         padding-top: 20px;
     }
     #nav_bar .close {
-      position: absolute;
-      right: -50px;
-      float: right;
-      height: 30px;
-      width: 32px;
-      top: 10px;
-      i{
-        font-size: 20px;
-      }
+        position: absolute;
+        right: -50px;
+        float: right;
+        height: 30px;
+        width: 32px;
+        top: 10px;
+        i {
+            font-size: 20px;
+        }
     }
     .close i {
         font-size: 12px;
     }
     h4.font-26.pull-left.light-text {
         width: 233px;
+    }
+    .custom_icon li {
+        padding: 0px;
+        text-align: left;
+        font-size: 1em;
+    }
+    .icon_div img {
+        width: 100%;
     }
 }
 
@@ -940,18 +974,13 @@ input:-webkit-autofill {
     .custom_width {
         width: 100%;
     }
-    .icon_div {
-        float: initial;
-        margin: 0 auto;
-        border: none;
-    }
     .logo img {
         max-width: 100%;
         width: 75%;
     }
     .icon_bars {
         position: relative;
-        top: 20px;
+        top: 20px !important;
     }
     .font-26 {
         font-size: 16px;
@@ -969,6 +998,12 @@ input:-webkit-autofill {
     .font-28 {
         font-size: 20px;
     }
+    .app_menu li a {
+        height: 45px;
+    }
+    img.note-avatar {
+        width: 11%;
+    }
 }
 
 @media (max-width:1024px) {}
@@ -982,6 +1017,7 @@ input:-webkit-autofill {
 .page_left .close {
     display: block;
 }
-div#nav_bar ul{
-  padding-left: 20px;
+
+div#nav_bar ul {
+    padding-left: 20px;
 }
