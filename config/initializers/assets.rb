@@ -12,3 +12,5 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( easyautocomplete/easy-autocomplete.min.css)
 Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
 Rails.application.config.assets.precompile += %w( jquery.remotipart.js )
+Rails.application.config.assets.precompile += %w( nprogress.css )
+Rails.application.config.assets.precompile += %w( nprogress-bootstrap )
