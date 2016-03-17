@@ -143,3 +143,10 @@ body.menu-shown{
   color: #555555;
   font-size: 20px;
 }
+#nprogress .bar{
+  background: #ba2586;
+}
+#nprogress .spinner-icon{
+  border-top-color: #ba2586;
+  border-left-color: #ba2586;
+}
