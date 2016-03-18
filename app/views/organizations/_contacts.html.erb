@@ -3,7 +3,7 @@
     <h3 class="about_title pull-left">CONTACTS AT THIS ORGANIZATION</h3>
     <a class="pull-right add_option" onclick="handle_contact_updation(this);" data-href="<%=new_contact_path(:organization_id=>@organization.id)%>" href="javascript:void(0)"><i class="fa fa-plus"></i> ADD</a>
   </div>
-  <div class="col-xs-12">
+  <div class="col-xs-12 p-0">
     <ul class="gover_list contacts-container">
       <%@organization.contacts.each do|contact|%>
           <li class="contact" id="contact_<%=contact.id%>">

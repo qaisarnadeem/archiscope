@@ -83,6 +83,9 @@ div.full_width:nth-of-type(even) {
 .meroon_bg, .yello_bg, .green_bg {
   padding: 0px 10px;
   margin: 0px 5px;
+  @media (max-height: 767px) {
+    padding: 0px 8px;
+  }
 }
 .easy-autocomplete input {
   box-shadow: none;
@@ -149,4 +152,25 @@ body.menu-shown{
 #nprogress .spinner-icon{
   border-top-color: #ba2586;
   border-left-color: #ba2586;
+}
+.pl0{
+  padding-left: 0 !important;
+}
+#tab-chooser{
+  box-shadow: none;
+}
+footer.light_bg{
+  background-color: #562F72;
+}
+footer p{
+  padding-top: 10px;
+}
+.alert button.close{
+  font-size: 25px !important;
+}
+#page-content-wrapper{
+  min-height: 700px;
+}
+.pr0{
+  padding-right: 0;
 }

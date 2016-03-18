@@ -1,15 +1,15 @@
-<div class="container">
-  <div class="col-xs-12 mtb-20">
+<div class="container p-0">
+  <div class="col-xs-12 mtb-20 p-0">
     <table class="table table_custom table-hover white-bg tags-table">
       <tbody>
       <%grouped_result.group_by(&:tag_name).sort_by {|tag_name,taggings|  -1*taggings.sum {|hash| hash['count_all']}}.each do |tag_data|%>
          <%tag_name,tagging=tag_data.first,tag_data.last%>
           <tr data-href="<%=root_path(q: tag_name,type:filter_type)%>">
-            <td class="bt-0 br-1" width="50 " align="center"><%=tagging.sum {|hash| hash['count_all']}%></td>
-            <td class="bt-0"><%=tag_name%>
+            <td class="bt-0 br-1 col-xs-2" width="50 " align="center"><%=tagging.sum {|hash| hash['count_all']}%></td>
+            <td class="bt-0 col-xs-5"><%=tag_name%>
              
             </td>
-            <td> 
+            <td class="col-xs-5 pl0">
             <div class="pull-right">
                 <%count_hash=tagging.group_by(&:organization_type_id)%>
                 <%if count_hash[Organization::Company]%>
