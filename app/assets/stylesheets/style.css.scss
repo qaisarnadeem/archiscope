@@ -509,7 +509,7 @@ h4.dark_blue {
 }
 
 .add_option {
-    font-size: 18px;
+    font-size: 1.2em;
     color: #3597d4;
     margin: 20px 0px;
 }
@@ -519,7 +519,7 @@ h4.dark_blue {
 }
 
 .name-title {
-    font-size: 30px;
+    font-size: 1.7em;
     font-family: 'AvenirLTStd';
     font-weight: bold;
 }
@@ -706,7 +706,7 @@ h4.dark_blue {
     margin: 0 auto;
 }
 
-.close {
+.modal .close {
     color: #fff !important;
     font-size: 40px !important;
     opacity: 10 !important;
@@ -802,7 +802,7 @@ input:-webkit-autofill {
 }
 
 
-/*================================ new Changes==========================*/
+/*================================ new Changes ==========================*/
 
 .icon_bars {
     top: 16px !important;
@@ -813,7 +813,7 @@ input:-webkit-autofill {
 }
 
 .light_bg {
-    background-color: rgba(210, 149, 253, 0.39);
+    background-color: rgba(134, 51, 193, 0.67);
 }
 
 .nav>li.active a {
@@ -956,6 +956,9 @@ input:-webkit-autofill {
     .icon_div img {
         width: 100%;
     }
+    img.note-avatar {
+        width: 10%;
+    }
 }
 
 @media screen and (min-width: 640px) and (max-width: 768px) {}
@@ -971,9 +974,6 @@ input:-webkit-autofill {
 }
 
 @media screen and (min-width: 320px) and (max-width: 480px) {
-    .custom_width {
-        width: 100%;
-    }
     .logo img {
         max-width: 100%;
         width: 75%;
@@ -1003,6 +1003,15 @@ input:-webkit-autofill {
     }
     img.note-avatar {
         width: 11%;
+    }
+    .add_option {
+        font-size: 0.9em;
+    }
+    .custom_width h2 {
+        margin: 0px;
+    }
+    .font-16 {
+        font-size: 1em;
     }
 }
 
