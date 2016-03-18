@@ -14,10 +14,10 @@
   </div>
   <div class="col-xs-12 <%=Organization::OrganizationTypesColors[organization.organization_type_id] %>  p-10">
     <ul class="custom_icon">
-      <li class="col-xs-3 text-center"><img src="../../assets/images/user.png" width="15"> <span><%=organization.contacts.length%> Contact</span></li>
-      <li class="col-xs-3 text-center"><img src="../../assets/images/g-cir.png" width="15"> <span><%=organization.tech_areas.length%> Tech Areas</span></li>
-      <li class="col-xs-3 text-center"><img src="../../assets/images/global.png" width="15"> <span><%=organization.app_areas.length%> Applications</span></li>
-      <li class="col-xs-3 text-center"><img src="../../assets/images/vlc.png" width="15"> <span><%=organization.problems.length%> Problems</span></li>
+      <li class="col-xs-3 text-center"><%=image_tag("user.png",width:15)%>   <span><%=organization.contacts.length%> Contact</span></li>
+      <li class="col-xs-3 text-center"><%=image_tag("g-cir.png",width:15)%>  <span><%=organization.tech_areas.length%> Tech Areas</span></li>
+      <li class="col-xs-3 text-center"><%=image_tag("global.png",width:15)%> <span><%=organization.app_areas.length%> Applications</span></li>
+      <li class="col-xs-3 text-center"><%=image_tag("vlc.png",width:15)%>    <span><%=organization.problems.length%> Problems</span></li>
     </ul>
   </div>
   <%end%>
