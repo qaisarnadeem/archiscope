@@ -174,4 +174,19 @@ footer p{
 .pr0{
   padding-right: 0;
 }
-@grid-float-breakpoint: 992ppx;
+
+
+.map-marker {
+  display: inline-block;
+  position: relative;
+
+  i {
+    position: absolute;
+    font-size: 0.45em;
+    top: 25%;
+    left: 50%;
+    text-align: center;
+    width: 1em;
+    margin-left: -.5em;
+  }
+}

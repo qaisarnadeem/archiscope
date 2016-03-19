@@ -1,6 +1,7 @@
 <li class="contact" id="contact_<%=contact.id%>">
   <div class="col-xs-12">
-    <h4 class="name-title pull-left"><%=contact.full_name%> <i class="fa fa-dot-circle-o font-18 <%=contact.is_available? ? "green" : "red"%>"></i></h4>
+    <h4 class="name-title pull-left"><%=contact.full_name%>
+      <i class="fa fa-circle-o map-marker font-18 <%=contact.is_available? ? "green" : "red"%>"><i class="fa fa-circle"></i></i></h4>
     <div class="pull-right icon_edit_pincel">
       <a class="pr-10" data-href="<%=edit_contact_path(contact)%>" href="javascript:void(0)" onclick="handle_contact_updation(this);"><i class="fa fa-pencil"></i></a>
       <%=link_to 'javascript:void(0)', 'data-href'=>contact_path(contact) ,:onclick=>'handle_contacts_removal(this);' do%>
