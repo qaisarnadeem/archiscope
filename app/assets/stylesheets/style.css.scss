@@ -843,13 +843,14 @@ input:-webkit-autofill {
   }
 }
 
-@media screen and (min-width: 320px) and (max-width: 768px) {
+@media screen and (min-width: 320px) and (max-width: 1199px) {
+  .navbar-toggle {
+    display: block;
+  }
   .navbar {
     min-height: 0px;
   }
-  .modal-open .modal {
-    width: 95%;
-  }
+
   #header {
     margin: 0px;
   }
@@ -869,12 +870,6 @@ input:-webkit-autofill {
     padding: 10px;
     text-align: center;
     height: 94px;
-  }
-  .custom_width {
-    width: 64%;
-  }
-  .custom_width h2 {
-    font-size: 1.2em;
   }
   /*==============================================*/
   /*-------------------------------*/
@@ -941,10 +936,32 @@ input:-webkit-autofill {
     float: right;
     height: 30px;
     width: 32px;
-    top: 10px;
+    top: 20px;
     i {
       font-size: 20px;
     }
+  }
+}
+
+@media screen and (min-width: 640px) and (max-width: 768px) {}
+@media screen and (min-width: 1200px) and (max-width: 1220px) {
+  .navbar-inverse{
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .container-fluid > .navbar-collapse{
+    margin-left: 0;
+  }
+  .modal-open .modal {
+    width: 95%;
+  }
+  .custom_width {
+    width: 64%;
+  }
+  .custom_width h2 {
+    font-size: 1.2em;
   }
   .close i {
     font-size: 12px;
@@ -964,7 +981,7 @@ input:-webkit-autofill {
     width: 10%;
   }
   .box_asian{
-   padding: 10px;
+    padding: 10px;
     .icon_div{
       padding: 5px;
     }
@@ -976,8 +993,6 @@ input:-webkit-autofill {
     font-size: 12px !important;
   }
 }
-
-@media screen and (min-width: 640px) and (max-width: 768px) {}
 
 @media screen and (min-width: 480px) and (max-width: 640px) {
   .font-26 {
@@ -1064,11 +1079,11 @@ input:-webkit-autofill {
   display: block;
 }
 
-div#nav_bar ul {
-  padding-left: 20px;
-}
 @media (max-width: 767px) {
   .table_custom tbody tr td{
     font-size: 15px;
   }
+}
+.navbar-right{
+  margin-right: 0;
 }
