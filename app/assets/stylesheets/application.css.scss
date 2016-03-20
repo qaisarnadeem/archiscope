@@ -214,3 +214,8 @@ footer p{
   border: none !important;
   box-shadow: none !important;
 }
+@media (max-width: 480px) {
+  .users-table {
+    width: 96vw;
+  }
+}
