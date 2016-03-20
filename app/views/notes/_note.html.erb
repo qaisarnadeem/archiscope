@@ -3,7 +3,7 @@
     <div class="col-xs-12 p-0">
       <%=image_tag note.user.avatar.url(:thumb),class:"pull-left mr10 note-avatar"%>
       <div class="pull-left">
-        <h4 class="name-title"><%=note.user.full_name%></h4>
+        <h4 class="name-title mt-0"><%=note.user.full_name%></h4>
         <p class="light-text font-16"><%=time_ago_in_words note.updated_at%> ago</p>
       </div>
       <div class="pull-right icon_edit_pincel mt-10">
@@ -11,7 +11,7 @@
         <a class="pr-10" href="javascript:void(0)" onclick="handle_note_removal(this);" data-href="<%=note_path(note)%>"><i class="fa fa-times"></i></a>
       </div>
     </div>
-    <div class="col-xs-12 p-0 mtb-20">
+    <div class="col-xs-12 p-0 mt-10">
       <p class="light-text font-16"><%=note.description%></p>
     </div>
   </div>

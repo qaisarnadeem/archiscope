@@ -863,14 +863,6 @@ input:-webkit-autofill {
   .app_menu li {
     padding: 0px;
   }
-  .icon_div {
-    float: left;
-    border-radius: 5px;
-    border: 2px solid #ddd;
-    padding: 10px;
-    text-align: center;
-    height: 94px;
-  }
   /*==============================================*/
   /*-------------------------------*/
   /*          Dark Overlay         */
@@ -951,6 +943,15 @@ input:-webkit-autofill {
   }
 }
 @media screen and (min-width: 320px) and (max-width: 768px) {
+  .icon_div {
+    float: left;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    height: 94px;
+    max-width: 120px;
+  }
   .container-fluid > .navbar-collapse{
     margin-left: 0;
   }
@@ -975,7 +976,8 @@ input:-webkit-autofill {
     font-size: 1em;
   }
   .icon_div img {
-    //width: 100%;
+    width: auto;
+    height: 100%;
   }
   img.note-avatar {
     width: 10%;
@@ -1042,10 +1044,6 @@ input:-webkit-autofill {
   .add_option {
     font-size: 0.9em;
   }
-  .custom_width h2 {
-    text-transform: capitalize;
-    margin: 0px;
-  }
   .font-16 {
     font-size: 1em;
   }
@@ -1086,4 +1084,13 @@ input:-webkit-autofill {
 }
 .navbar-right{
   margin-right: 0;
+}
+@media screen and (min-width: 320px) and (max-width: 360px) {
+  .custom_width h2 {
+    text-transform: capitalize;
+    margin: 0px;
+  }
+  .custom_width{
+    padding-left: 25px;
+  }
 }

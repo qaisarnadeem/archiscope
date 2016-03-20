@@ -179,14 +179,28 @@ footer p{
 .map-marker {
   display: inline-block;
   position: relative;
-
+  font-size: 0.9em;
   i {
     position: absolute;
-    font-size: 0.45em;
-    top: 25%;
+    font-size: 0.4em;
+    top: 28%;
     left: 50%;
     text-align: center;
     width: 1em;
     margin-left: -.5em;
+  }
+}
+
+@media (max-width: 767px) {
+  .easy-autocomplete-container ul{
+    min-width: 80vw;
+  }
+}
+.fs-1em{
+  font-size: 1em;
+}
+@media (min-width: 768px) {
+  img.note-avatar{
+    height: 56px;
   }
 }
