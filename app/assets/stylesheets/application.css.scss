@@ -204,3 +204,13 @@ footer p{
     height: 56px;
   }
 }
+@media (max-width: 1290px) and (min-height: 1200) {
+  ul.nav.navbar-nav li a {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
+.clear-border{
+  border: none !important;
+  box-shadow: none !important;
+}

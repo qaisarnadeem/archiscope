@@ -1,0 +1,40 @@
+<%content_for :top_header do%>
+    <div class="col-xs-8 p-0 text-center logo"><%=image_tag 'logo1.png' %></div>
+<%end%>
+<%@body_class='login_bg'%>
+<div class="col-xs-12 bg-grey">
+  <div class="container">
+    <%=form_tag users_path ,:class=>'',:method=>:get do%>
+        <%=text_field_tag 'q' , params[:q],:placeholder=>'Type Email or Name',:class=>'form-control custom_field clear-border'%>
+    <%end%>
+  </div>
+</div>
+<div class="col-xs-12 p-0">
+      <div class="col-xs-12 mtb-20 p-0">
+        <table class="table table_custom table-hover white-bg tags-table">
+          <tbody>
+          <th>Name</th><th>Email</th><th>Role</th><th>Action</th>
+          <%@users.each do |user|%>
+              <tr>
+                <td class="bt-0 col-xs-4">
+                  <%=user.full_name%>
+                </td>
+                <td class="col-xs-4 pl0">
+                  <%=user.email%>
+                </td>
+                <td class="col-xs-2 pl0">
+                  <%=user.role_name%>
+                </td>
+                <td class="col-xs-2">
+                  <div class="">
+                    <%=link_to "Block", block_user_path(user) ,class:'' if user.is_active? and current_user != user%>
+                    <%=link_to "Un Block", un_block_user_path(user),class:'' unless user.is_active?%>
+                  </div>
+                </td>
+              </tr>
+          <%end%>
+          </tbody>
+        </table>
+      </div>
+</div>
+<%= will_paginate @users%>

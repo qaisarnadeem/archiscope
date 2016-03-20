@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   resources :contacts
   resources :notes
+  resources :users ,only: [:index] do
+    member do
+      get :block
+      get :un_block
+    end
+  end
   resources :organizations do
     member do
       post :add_tech_area

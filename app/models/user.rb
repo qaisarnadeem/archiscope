@@ -30,6 +30,27 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def is_active?
+    !is_blocked?
+  end
+
+  def active_for_authentication?
+    super && is_active?
+  end
+
+  def role_name
+    RolesFriendlyName[self.role_id]
+  end
+
+  def inactive_message
+    is_active? ? super : "Your account is blocked please contact administrator"
+  end
+
+  def self.find_by_query query
+    return User if query.blank?
+     self.where("LOWER(email) LIKE (?) or LOWER(concat(first_name,last_name)) like (?)","%#{query.to_s.downcase}%","%#{query.to_s.downcase}%")
+  end
+
   private
   def set_role
     self.role_id=NormalUser if self.role_id.blank?
