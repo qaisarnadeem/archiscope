@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
 
   def self.find_by_query query
     return User if query.blank?
-     self.where("LOWER(email) LIKE (?) or LOWER(concat(first_name,last_name)) like (?)","%#{query.to_s.downcase}%","%#{query.to_s.downcase}%")
+     self.where("LOWER(email) LIKE (?) or LOWER(concat (concat(first_name,' '),last_name)) like (?)","%#{query.to_s.downcase}%","%#{query.to_s.downcase}%")
   end
 
   private
