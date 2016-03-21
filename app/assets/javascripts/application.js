@@ -130,6 +130,11 @@ function tab_open(){
         close_div(10);
     });
 }
+function close_alert(){
+    setTimeout(function(){
+        $('.alert.fade.in').fadeOut();
+    },5000);
+}
 $(document).ready(tab_open);
 $(document).on('page:load', tab_open);
 $(document).ready(function(){
@@ -139,3 +144,5 @@ $(document).ready(function(){
         e.preventDefault();
     });
 });
+$(document).ready(close_alert);
+$(document).on('page:load', close_alert);

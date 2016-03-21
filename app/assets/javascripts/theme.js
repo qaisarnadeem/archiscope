@@ -42,7 +42,7 @@
     function close_div(duration) {
         if(duration==undefined)
         {
-            $('.left_219').animate({ "left": '-267px' });
+            $('.left_219').animate({ "left": '-280px' });
             $('#page-content-wrapper').animate({ "left": '0px' });
         }else {
             $('.left_219').animate({ "left": '-267px' },duration);

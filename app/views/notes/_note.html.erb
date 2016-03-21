@@ -6,7 +6,7 @@
         <h4 class="name-title mt-0"><%=note.user.full_name%></h4>
         <p class="light-text font-16"><%=time_ago_in_words note.updated_at%> ago</p>
       </div>
-      <div class="pull-right icon_edit_pincel mt-10">
+      <div class="pull-right icon_edit_pincel mt-0">
         <a class="pr-10" href="javascript:void(0)" onclick="handle_contact_updation(this);" data-href="<%=edit_note_path(note)%>"><i class="fa fa-pencil"></i></a>
         <a class="pr-10" href="javascript:void(0)" onclick="handle_note_removal(this);" data-href="<%=note_path(note)%>"><i class="fa fa-times"></i></a>
       </div>

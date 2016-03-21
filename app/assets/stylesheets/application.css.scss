@@ -204,7 +204,7 @@ footer p{
     height: 56px;
   }
 }
-@media (max-width: 1290px) and (min-height: 1200) {
+@media (max-width: 1290px) and (min-height: 1200px) {
   ul.nav.navbar-nav li a {
     padding-left: 6px;
     padding-right: 6px;
@@ -217,5 +217,73 @@ footer p{
 @media (max-width: 480px) {
   .users-table {
     width: 96vw;
+  }
+}
+.bg-grey.users{
+  background: #fff;
+}
+
+//*************************//
+
+
+
+
+@media screen and (max-width: 480px){
+  .icon_div {
+    height: 66px;
+    width: 66px;
+    border: 1px solid #ddd;
+  }
+  .icon_div img {
+    height: 50px !important;
+    width: 50px !important;
+  }
+}
+@media screen and (max-width: 768px){
+  .icon_div {
+    height: 66px !important;
+    width: 66px !important;
+    border: 1px solid #ddd;
+  }
+
+  .icon_div img {
+    height: 50px !important;
+    width: 50px !important;
+  }
+}
+.icon_div img {
+  height: 80px;
+  width: 80px;
+}
+.icon_div {
+  border: 1px solid #ddd;
+  max-width: 112px;
+  height: 112px;
+  padding: 16px;
+}
+.company {
+  background-color: #ba2586;
+}
+.gover_icon {
+  width: 124px;
+  height: 124px;
+}
+@media screen and (max-width: 1198px){
+  .navbar-right {
+    float: left !important;
+  }
+  .navbar-nav>li {
+    float: none !important;
+  }
+  .navbar-right {
+    float: left !important;
+  }
+  .nav>li>a>span {
+    float: none ;
+  }
+}
+@media screen and (min-width: 768px){
+  .filter-icon {
+    right: 50%;
   }
 }
