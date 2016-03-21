@@ -15,9 +15,9 @@
   <div class="col-xs-12 <%=Organization::OrganizationTypesColors[organization.organization_type_id] %>  p-10">
     <ul class="custom_icon">
       <li class="col-xs-3 text-center"><%=image_tag("user.png",width:15)%>   <span><%=organization.contacts.length%> <%='Contact'.pluralize(organization.contacts.length)%></span></li>
-      <li class="col-xs-3 text-center"><%=image_tag("g-cir.png",width:15)%>  <span><%=organization.tech_areas.length%> Tech Areas</span></li>
-      <li class="col-xs-3 text-center"><%=image_tag("global.png",width:15)%> <span><%=organization.app_areas.length%> Applications</span></li>
-      <li class="col-xs-3 text-center"><%=image_tag("vlc.png",width:15)%>    <span><%=organization.problems.length%> Problems</span></li>
+      <li class="col-xs-3 text-center"><%=image_tag("g-cir.png",width:15)%>  <span><%=organization.tech_areas.length%> Tech <%='Area'.pluralize(organization.tech_areas.length)%></span></li>
+      <li class="col-xs-3 text-center"><%=image_tag("global.png",width:15)%> <span><%=organization.app_areas.length%> <%='Application'.pluralize(organization.app_areas.length)%></span></li>
+      <li class="col-xs-3 text-center"><%=image_tag("vlc.png",width:15)%>    <span><%=organization.problems.length%> <%='Problem'.pluralize(organization.problems.length)%></span></li>
     </ul>
   </div>
   <%end%>
